@@ -63,6 +63,34 @@ h1, h2 {
 	height: 0;
 }
 
+.pull-right {
+	float: right;
+}
+
+.pull-left {
+	float: left;
+}
+
+.btn-default {
+	display: inline-block;
+	min-width: 90px;
+	padding: 0 20px;
+	margin: 0 5px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 14px;
+	text-shadow: 1px 1px 1px #808080;
+	height: 28px;
+	line-height: 24px;
+	text-align: center;
+	background: #6fc5c9;
+	border-bottom: 5px solid #61acaf;
+}
+
+.btn-default:hover {
+	opacity: .8;
+}
+
 *::-webkit-input-placeholder {
 	color: #666;
 	opacity: 1;
@@ -434,12 +462,37 @@ ul.menu-cat li a:hover {
 .product {
 	width: 250px;
 	border: 1px solid #E6E4E4;
-	box-shadow: 2px 2px 2px #E6E4E4;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+	transition: box-shadow .25s;
 	padding: 10px;
 	margin: 0 0 20px;
 	display: inline-block;
 	height: 340px;
 	vertical-align: top;
+	position: relative;
+}
+
+.product:hover {
+	transition: box-shadow .25s;
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.eyestop {
+	height: 86px;
+	width: 86px;
+	position: absolute;
+	top: 0;
+	right: 0;	
+}
+
+.eyestop:after {
+	content: url(../img/eyestopper.png);
+	height: 86px;
+	width: 86px;
+	position: absolute;
+    top: -5px;
+    right: -5px;
 }
 
 .product-pic {
@@ -599,40 +652,4 @@ ul.menu-cat li a:hover {
 	margin: 0 5px;
 }
 
-.pull-right {
-	float: right;
-}
 
-.pull-left {
-	float: left;
-}
-
-.btn-default {
-	display: inline-block;
-	min-width: 90px;
-	padding: 0 20px;
-	margin: 0 5px;
-	color: #fff;
-	text-decoration: none;
-	font-size: 14px;
-	text-shadow: 1px 1px 1px #808080;
-	height: 28px;
-	line-height: 24px;
-	text-align: center;
-	background: #6fc5c9;
-	border-bottom: 5px solid #61acaf;
-}
-
-.btn-default:hover {
-	opacity: .8;
-}
-
-
-
-
-#element_to_pop_up {
-/* 	height: 100px;
-width: 200px;
-background: #fff;
-display: none; */
-}

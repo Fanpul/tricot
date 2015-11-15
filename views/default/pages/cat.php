@@ -5,6 +5,9 @@
 ?>
 
 <div class="product">
+	<?php if ($value['new']):?>
+		<div class="eyestop"></div>
+	<?php endif;?>
 	<div class="product-pic">
 		<a href="?view=product&productid=<?=$value['id']?>">
 			<img src="<?=PRODUCTIMG?><?=$value['img']?>" alt="<?=$value['name']?>">

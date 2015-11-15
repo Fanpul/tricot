@@ -81,8 +81,20 @@ function category($link){
 }
 
 function products($link, $category, $start_pos, $perpage){
-	$query = "SELECT id, name, img, price FROM product 
+	$query = "SELECT id, name, img, price, new FROM product 
 		WHERE categoryid='$category' AND visible='1' LIMIT $start_pos, $perpage";
+	$res = mysqli_query($link, $query) or die(mysqli_error($link));
+	//$_SESSION['count'][$category] = mysql_num_rows($res);
+	$prod = array();
+	while($row = mysqli_fetch_assoc($res)){
+		$prod[] = $row;
+	}
+	return $prod;
+}
+
+function eyestopper($link, $start_pos, $perpage){
+	$query = "SELECT id, name, img, price, new FROM product 
+		WHERE visible='1' AND new='1' LIMIT $start_pos, $perpage";
 	$res = mysqli_query($link, $query) or die(mysqli_error($link));
 	//$_SESSION['count'][$category] = mysql_num_rows($res);
 	$prod = array();

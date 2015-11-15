@@ -44,11 +44,11 @@
 	            	<form class="modal-form clear" method="post">
 	            		<div class="form-group">
 							<label for="inputlogin">Логин</label>
-							<input type="text" class="form-control" id="inputlogin" placeholder="login" >
+							<input type="text" class="form-control" id="inputlogin" required>
 						</div>
 						<div class="form-group">
 							<label for="InputPassword">Пароль</label>
-							<input type="password" class="form-control" id="InputPassword" placeholder="password" >
+							<input type="password" class="form-control" id="InputPassword" required>
 						</div>
 						<div class="form-group clear">
 							<a class="pull-right b-close js-open-reg" href="#">Регистрация</a>
@@ -126,6 +126,7 @@
 		</header>
 		<div class="row">
 			<ul class="menu-cat">
+				<li><a href="?view=new">Новинки</a></li>
 			    <?php if($category_list):
 			    	foreach ($category_list as $value):
 			    ?>    
