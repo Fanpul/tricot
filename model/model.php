@@ -24,10 +24,10 @@ function clear($link, $var){
 }
 
 /********auth vk*********/
-require_once '/../SocialAuther/autoload.php';
+//require_once '/../SocialAuther/autoload.php';
 /************************/
 // конфигурация настроек адаптера
-$vkAdapterConfig = array(
+/*$vkAdapterConfig = array(
     'client_id'     => '5139295',
     'client_secret' => 'w06e408Xl2gpcYeisVfV',
     'redirect_uri'  => 'http://tri.loc/?view=auth'
@@ -40,9 +40,9 @@ $vkAdapter = new SocialAuther\Adapter\Vk($vkAdapterConfig);
 $auther = new SocialAuther\SocialAuther($vkAdapter);
 //echo '<p><a href="' . $auther->getAuthUrl() . '">Аутентификация через ВКонтакте</a></p>';
 // аутентификация и вывод данных пользователя или вывод ссылки для аутентификации
-/*if (!isset($_GET['code'])) {
-    echo '<p><a href="' . $auther->getAuthUrl() . '">Аутентификация через ВКонтакте</a></p>';
-}*/
+// if (!isset($_GET['code'])) {
+//    echo '<p><a href="' . $auther->getAuthUrl() . '">Аутентификация через ВКонтакте</a></p>';
+// }
 
 if ($auther->authenticate()) {
 
@@ -51,24 +51,24 @@ if ($auther->authenticate()) {
     );
 
     $record = mysqli_fetch_array($result);
-    if (!$record) {
-/*        $values = array(
-            $auther->getSocialId(),
-            $auther->getName(),
-            $auther->getEmail(),
-            $auther->getSocialPage(),
-            $auther->getSex(),
-            date('Y-m-d', strtotime($auther->getBirthday())),
-            $auther->getAvatar()
-        );*/
+    // if (!$record) {
+    //     $values = array(
+    //         $auther->getSocialId(),
+    //         $auther->getName(),
+    //         $auther->getEmail(),
+    //         $auther->getSocialPage(),
+    //         $auther->getSex(),
+    //         date('Y-m-d', strtotime($auther->getBirthday())),
+    //         $auther->getAvatar()
+    //     );
         $b = date('Y-m-d', strtotime($auther->getBirthday()));
         $query = "INSERT INTO `users` (`social_id`, `name`, `email`, `social_page`, `sex`, `birthday`, `avatar`) VALUES ('{$auther->getSocialId()}', '{$auther->getName()}', '{$auther->getEmail()}', '{$auther->getSocialPage()}', '{$auther->getSex()}', '$b', '{$auther->getAvatar()}' )";
         $result = mysqli_query($link, $query);
     }
 }
+*/
 
-
-/**********************/
+/*********************/
 
 function category($link){
 	$query = "SELECT * FROM category";

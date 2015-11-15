@@ -38,7 +38,7 @@
 	            <!-- Element to pop up -->
 	            <div class="modal-window" id="js-auth-modal">
 					<div class="modal-header">
-						<h3>Войти в кабинет клиента*</h3>
+						<h3>Войти в кабинет клиента</h3>
 						<span class="btn-close b-close"></span>
 					</div>
 	            	<form class="modal-form clear" method="post">
