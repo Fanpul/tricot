@@ -19,7 +19,7 @@ switch ($view) {
 		else{
 			$page = 1;
 		}
-		$count_rows = count_rows($link, $category);
+		$count_rows = count_rows_new($link);
 		$pages_count = ceil($count_rows / $perpage);
 		if(!$pages_count) $pages_count = 1;
 		if($page > $pages_count) $page = $pages_count;
@@ -30,7 +30,7 @@ switch ($view) {
 	case 'cat':
 		$category = abs((int)$_GET['category']);
 		$current_cat = current_cat($link, $category);
-		$perpage = 6;
+		$perpage = 4;
 		if(isset($_GET['page'])){
 			$page = (int)$_GET['page'];
 			if($page < 1){

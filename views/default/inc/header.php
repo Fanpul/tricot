@@ -44,7 +44,7 @@
 	            	<form class="modal-form clear" method="post">
 	            		<div class="form-group">
 							<label for="inputlogin">Логин</label>
-							<input type="text" class="form-control" id="inputlogin" required>
+							<input type="text" class="form-control" id="inputlogin" autofocus required>
 						</div>
 						<div class="form-group">
 							<label for="InputPassword">Пароль</label>
@@ -68,23 +68,23 @@
 	            	<form class="modal-form clear" method="post">
 	            		<div class="form-group">
 							<label for="inputlogin">Логин</label>
-							<input type="text" class="form-control" id="inputlogin" autofocus>
+							<input type="text" class="form-control" id="inputlogin" autofocus required>
 						</div>
 						<div class="form-group">
 							<label for="InputPassword">Пароль</label>
-							<input type="password" class="form-control" id="InputPassword">
+							<input type="password" class="form-control" id="InputPassword" required>
 						</div>		            	
 	            		<div class="form-group">
 							<label for="inputname">ФИО</label>
-							<input type="text" class="form-control" id="inputname">
+							<input type="text" class="form-control" id="inputname" required>
 						</div>	  
 	            		<div class="form-group">
 							<label for="inputmail">E-mail</label>
-							<input type="text" class="form-control" id="inputmail">
+							<input type="text" class="form-control" id="inputmail" required>
 						</div>
 	            		<div class="form-group">
 							<label for="js-inputphone">Телефон</label>
-							<input type="text" class="form-control" id="js-inputphone">
+							<input type="text" class="form-control" id="js-inputphone" required>
 						</div>							                  					
 						<div class="form-group clear">
 							<button class="btn-default b-close">Отмена</button>
