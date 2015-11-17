@@ -27,7 +27,7 @@
 <?php endforeach;?>
 <div class="clear"></div>
 <div class="block-pagination">
-	<?php if($pages_count > 1) pagination($page, $pages_count)?>
+	<?php if($pages_count > 1) pagination($page, $pages_count);?>
 </div>
 	<?php else:?>
 		<p>Товаров пока нет!</p>                 

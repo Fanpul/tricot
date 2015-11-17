@@ -31,6 +31,7 @@
 				<p class="client-btn"><span>Кабинет клиента</span></p>	
 				<ul class="menu-top">
 					<!-- Button that triggers the popup -->
+					<li><a href="<?=PATH?>admin">Админ панель</a></li>
 					<li><a id="js-open-auth" href="#">Вход</a></li>
 					<li><a href="#" class="js-open-reg">Регистрация</a></li>
 				</ul>	

@@ -1,2 +1,6 @@
 engine.mode.php
 real-config.php
+admin/config.php
+admin/views/default/build
+admin/views/default/documentation
+admin/views/default/test
