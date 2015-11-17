@@ -98,13 +98,6 @@
 		<header class="row">
 			<a href="#" class="col-md-2 logo">КОЛИБРИ</a>
 			<div class="functional col-md-offset-2 col-xs-8 ">
-				<menu class="col-xs-12">
-					<li><a href="#">Главная </a></li>
-					<li><a href="#">Обратная связь</a></li>
-					<li><a href="#">Отзывы</a></li>
-					<li><a href="#">О нас</a></li>
-					<li><a href="#">Корзина</a></li>
-				</menu>
 				<form action="" class="col-md-4 col-md-offset-3 search-form">
 					<div class="search-wrap">
 						<input type="text" class="search" placeholder="Поиск...">
@@ -126,18 +119,16 @@
 		</header>
 		<div class="row">
 			<ul class="menu-cat">
-				<li><a href="?view=new">Новинки</a></li>
-			    <?php if($category_list):
-			    	foreach ($category_list as $value):
-			    ?>    
-			      <li><a href="?view=cat&category=<?=$value['id']?>"><?=$value['name']?></a></li>  
-			    <?php endforeach;?>               
-			    <?php endif;?> 
+				<li><a href="#">Главная </a></li>
+				<li><a href="#">Обратная связь</a></li>
+				<li><a href="#">Отзывы</a></li>
+				<li><a href="#">О нас</a></li>
+				<li><a href="#">Корзина</a></li>
 			</ul>
 		</div>	
 		<div class="row">
 			<div class="caroosel">
-				<img src="<?=TEMPLATE?>img/618x230.jpg" alt="">
+				<img src="<?=TEMPLATE?>img/2015-04-08_134549.jpg" width="1110" alt="">
 			</div>
 		</div>	
 <div class="row">

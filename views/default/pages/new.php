@@ -9,7 +9,7 @@
 		<div class="eyestop"></div>
 	<?php endif;?>
 	<div class="product-pic">
-		<a href="?view=product&productid=<?=$value['id']?>">
+		<a href="test">
 			<img src="<?=PRODUCTIMG?><?=$value['img']?>" alt="<?=$value['name']?>">
 		</a>
 	</div>

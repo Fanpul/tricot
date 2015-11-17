@@ -9,7 +9,7 @@ $category_list = category($link);
 
 switch ($view) {
 	case 'new':
-		$perpage = 6;
+		$perpage = 3;
 		if(isset($_GET['page'])){
 			$page = (int)$_GET['page'];
 			if($page < 1){
@@ -30,7 +30,7 @@ switch ($view) {
 	case 'cat':
 		$category = abs((int)$_GET['category']);
 		$current_cat = current_cat($link, $category);
-		$perpage = 4;
+		$perpage = 3;
 		if(isset($_GET['page'])){
 			$page = (int)$_GET['page'];
 			if($page < 1){
@@ -47,7 +47,9 @@ switch ($view) {
 		$start_pos = ($page - 1) * $perpage;
 
 		$products = products($link, $category, $start_pos, $perpage);
-		break;		
+		break;	
+	case 'producttest':	
+		break;	
 	case 'auth':
 		# code...
 		break;
