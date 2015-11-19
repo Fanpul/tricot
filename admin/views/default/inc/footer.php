@@ -87,5 +87,35 @@
          Both of these plugins are recommended to enhance the
          user experience. Slimscroll is required when using the
          fixed layout. -->
+    <!-- DataTables -->
+        <script src="<?=PATH?><?=TEMPLATE?>plugins/datatables/jquery.dataTables.min.js"></script>
+        <script src="<?=PATH?><?=TEMPLATE?>plugins/datatables/dataTables.bootstrap.min.js"></script>
+        <!-- SlimScroll -->
+        <script src="<?=PATH?><?=TEMPLATE?>plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="<?=PATH?><?=TEMPLATE?>plugins/fastclick/fastclick.min.js"></script>
+        <!-- AdminLTE App -->
+
+        <script>
+          $(function () {
+            $("#example1").DataTable({
+              "language": {
+                          "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
+                      }
+              
+            });
+            $('#example2').DataTable({
+              "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
+              },
+              "paging": true,
+              "lengthChange": false,
+              "searching": true,
+              "ordering": true,
+              "info": false,
+              "autoWidth": true
+            });
+          });
+        </script>
   </body>
 </html>

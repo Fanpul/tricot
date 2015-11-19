@@ -2,7 +2,7 @@
 defined('KOLIBRI') or die('Access denied');
 require_once MODEL;
 session_start();
-$view = empty($_GET['view']) ? 'main' : $_GET['view'];
+$view = empty($_GET['view']) ? 'products' : $_GET['view'];
 $link = db_connect();
 if(isset($_POST['submit'])){
 	auth($link);	
@@ -16,8 +16,11 @@ if($_GET['do'] == 'logout'){
 	logout($link);
 	redirect();
 }
+
 switch ($view) {
-	case 'value':
+	case 'products':
+		$func = products($link);
+		$cat = getCategory($link, $id);
 		# code...
 		break;
 	
