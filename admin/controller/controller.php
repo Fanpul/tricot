@@ -40,19 +40,27 @@ switch ($view) {
 				}*/
   			break;
   			case 'add-product':
-				$view = 'add-product'; 
-/*
-				$target_dir = MAINPATH."userfiles/";
-				$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-				$uploadOk = 1;
-				$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-				*/
+				$view = 'add-product';
+				$parent = getCategoryAllByParentId($link);
+				//$child = getCategoryByParentId($link, );
+
+
 				if(isset($_POST["ok"])) {
+					//$uploaddir = "/home/u942717332/public_html/userfiles/";
 					$uploaddir = "C:/OpenServer/domains/tri.loc/userfiles/";
-					$basename =  md5(mt_rand (1000000000,9999999999)) . basename($HTTP_POST_FILES['pic']['name']);
-					$uploadfile = $uploaddir . $basename;
-					move_uploaded_file($HTTP_POST_FILES['pic']['tmp_name'], $uploadfile);
-					add_product($link, $basename);
+					$basename =  basename($_FILES['pic']['name']);
+					if ($basename) {
+						if (preg_match("/.+(\.[a-z]+)/i", $basename, $r)) {
+							$file = md5(mt_rand(1, 9999999999)) . strtolower($r[1]);
+						} else {
+							$file = $basename;  // по идее не должно сработать
+						}
+					} else {
+						$file = 'no-image.jpg';
+					}
+					$uploadfile = $uploaddir . $file;
+					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
+					add_product($link, $file);
 					redirect();
 				}
 

@@ -1,4 +1,5 @@
 engine.mode.php
+userfiles/
 real-config.php
 admin/config.php
 admin/views/default/build

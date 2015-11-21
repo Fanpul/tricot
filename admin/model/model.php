@@ -50,6 +50,17 @@ function getCategory($link, $id){
 	return $row;
 }
 
+// Получить все категории по родительскому ид
+function getCategoryAllByParentId($link, $parentid = 0){
+	$query = "SELECT * FROM category WHERE parentid='$parentid'";
+	$res = mysqli_query($link, $query) or die(mysqli_error($link));
+	$cat = array();
+	while($row = mysqli_fetch_assoc($res)){
+		$cat[] = $row;
+	}
+	return $cat;
+}
+
 // создать продукт
 function add_product($link, $file = false) {
 	$name = $_POST['name'];

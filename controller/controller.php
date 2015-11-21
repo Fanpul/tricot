@@ -9,7 +9,7 @@ $category_list = category($link);
 
 switch ($view) {
 	case 'new':
-		$perpage = 3;
+		$perpage = 6;
 		if(isset($_GET['page'])){
 			$page = (int)$_GET['page'];
 			if($page < 1){
@@ -30,7 +30,7 @@ switch ($view) {
 	case 'cat':
 		$category = abs((int)$_GET['category']);
 		$current_cat = current_cat($link, $category);
-		$perpage = 3;
+		$perpage = 6;
 		if(isset($_GET['page'])){
 			$page = (int)$_GET['page'];
 			if($page < 1){

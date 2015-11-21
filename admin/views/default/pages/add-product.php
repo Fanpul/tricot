@@ -26,7 +26,7 @@
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2 control-label">Название</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputEmail3" name="name">
+                    <input type="text" class="form-control" id="inputEmail3" name="name" required>
                   </div>
                 </div>
                 <div class="form-group">
@@ -38,14 +38,15 @@
                 <div class="form-group">
                     <label for="inputDesc3" class="col-sm-2 control-label">Категория</label>
                     <div class="col-sm-10">
-                       <select class="form-control select2" name="category">
+                       <select class="form-control select2" name="category" required>
                         <option selected="selected">---</option>
-                        <option>Alaska</option>
-                        <option>California</option>
-                        <option>Delaware</option>
-                        <option>Tennessee</option>
-                        <option>Texas</option>
-                        <option>Washington</option>
+                        <?php foreach ($parent as $key => $value):?>
+                          <optgroup label="<?=$value['name']?>">
+                            <?php foreach (getCategoryAllByParentId($link, $parentid=$value['id'] ) as $key => $value):?>
+                              <option value="<?=$value['id']?>"><?=$value['name']?></option>
+                            <?php endforeach;?>
+                          </optgroup>
+                        <?php endforeach;?>
                       </select> 
                     </div>
                 </div>
