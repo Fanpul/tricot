@@ -94,16 +94,13 @@
         <script src="<?=PATH?><?=TEMPLATE?>plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="<?=PATH?><?=TEMPLATE?>plugins/fastclick/fastclick.min.js"></script>
-        <!-- AdminLTE App -->
+        <!-- Select2 -->
+        <script src="<?=PATH?><?=TEMPLATE?>plugins/select2/select2.full.min.js"></script>
+        <!-- iCheck 1.0.1 -->
+        <script src="<?=PATH?><?=TEMPLATE?>plugins/iCheck/icheck.min.js"></script>
 
         <script>
           $(function () {
-            $("#example1").DataTable({
-              "language": {
-                          "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-                      }
-              
-            });
             $('#example2').DataTable({
               "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
@@ -114,6 +111,15 @@
               "ordering": true,
               "info": false,
               "autoWidth": true
+            });
+
+                //Initialize Select2 Elements
+            $(".select2").select2();
+
+                //iCheck for checkbox and radio inputs
+            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+              checkboxClass: 'icheckbox_minimal-blue',
+              radioClass: 'iradio_minimal-blue'
             });
           });
         </script>

@@ -6,6 +6,20 @@ function db_connect(){
 	return $link;
 }
 
+
+// redirect
+function redirect(){
+	$redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
+	header("Location: $redirect");
+	exit;
+}
+
+// logout
+function logout($link){
+	unset($_SESSION['auth']);
+	mysqli_close($link);
+}
+
 // Получить все продукты
 function products($link) {
 	$query = "SELECT * FROM product";
@@ -34,4 +48,20 @@ function getCategory($link, $id){
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
 	$row = mysqli_fetch_array($result);
 	return $row;
+}
+
+// создать продукт
+function add_product($link, $file = false) {
+	$name = $_POST['name'];
+	$desc = $_POST['description'];
+	$cat = $_POST['category'];
+	$price = $_POST['price'];
+	$articul = $_POST['articul'];
+	$new = $_POST['new'];
+	$visible = $_POST['visible'];
+	$cdate = date("Y-m-d H:i:s");
+	$pic = $file;
+	$query = "INSERT INTO product VALUES('', '$name', '$desc', '$pic', '$price', '$new', '$visible', '$cdate', '$articul', '$cat')";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
 }

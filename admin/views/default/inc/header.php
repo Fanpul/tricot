@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Select2 -->
+    <link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>plugins/select2/select2.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>plugins/iCheck/all.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. We have chosen the skin-blue for this starter

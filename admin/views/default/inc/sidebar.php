@@ -39,7 +39,7 @@
               <ul class="treeview-menu">
                 <li><a href="#">Добавить категорию</a></li>
                 <li><a href="#">Добавить подкатегорию</a></li>
-                <li><a href="#">Добавить продукт</a></li>
+                <li><a href="?view=products&amp;action=add-product">Добавить продукт</a></li>
               </ul>
             </li>
             <li><a href="?view=products"><i class="fa fa-shopping-cart"></i></i> <span>Все продукты</span></a></li>

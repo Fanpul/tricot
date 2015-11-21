@@ -33,7 +33,19 @@
         </thead>
 
         <tbody>
-			<?php foreach ($func as $value): ?>
+			<?php foreach ($func as $value): 
+				if ($value['new'] == 1) {
+                    $value['new'] = '<i class="fa fa-check" style="color: green;"></i>';
+				} else { 
+					$value['new'] = '';
+				}
+
+				if ($value['visible'] == 1) {
+                    $value['visible'] = '<i class="fa fa-eye" style="color: green;"></i>';
+				} else { 
+                    $value['visible'] = '<i class="fa fa-eye-slash" style="color: red;"></i>';
+				}
+			?>	
 				<tr>
 					<td>
 						<?php 
@@ -50,7 +62,7 @@
 					<td><?=$value['articul']?></td>
 					<td><?=$value['new']?></td>
 					<td><?=$value['visible']?></td>
-					<td><a href="#">x</a></td>
+					<td><a href="#"><i class="fa fa-trash"></i></a></td>
 				</tr>	
 			<?php endforeach;?>
         </tbody>
