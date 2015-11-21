@@ -61,6 +61,18 @@ function getCategoryAllByParentId($link, $parentid = 0){
 	return $cat;
 }
 
+// создать категорию
+function add_category($link) {
+	$name = $_POST['name'];
+	$parentid = $_POST['category'];
+	$visible = $_POST['visible'];
+	$cdate = date("Y-m-d");
+
+	$query = "INSERT INTO category VALUES('', '$name', '$parentid', '$cdate', '$visible')";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
+}
+
 // создать продукт
 function add_product($link, $file = false) {
 	$name = $_POST['name'];

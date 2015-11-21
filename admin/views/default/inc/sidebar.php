@@ -37,14 +37,12 @@
             <li class="treeview">
               <a href="#"><i class="fa fa-plus"></i></i> <span>Создать...</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="#">Добавить категорию</a></li>
-                <li><a href="#">Добавить подкатегорию</a></li>
+                <li><a href="?view=categories&amp;action=add-category">Добавить категорию</a></li>
                 <li><a href="?view=products&amp;action=add-product">Добавить продукт</a></li>
               </ul>
             </li>
             <li><a href="?view=products"><i class="fa fa-shopping-cart"></i></i> <span>Все продукты</span></a></li>
             <li><a href="#"><i class="fa fa-link"></i> <span>Все категории</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Все подкатегории</span></a></li>
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

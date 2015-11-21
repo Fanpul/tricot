@@ -18,6 +18,23 @@ if($_GET['do'] == 'logout'){
 }
 
 switch ($view) {
+	case 'categories':
+		switch ($_GET['action']) {
+			case 'add-category':
+				$view = 'add-category';
+				$parent = getCategoryAllByParentId($link);
+				
+				if(isset($_POST["ok"])) {
+					add_category($link);
+					redirect();
+				}
+				break;
+			
+			default:
+				# code...
+				break;
+		}
+		break;
 	case 'products':
 		$func = products($link);
 		$cat = getCategory($link, $id);
@@ -42,8 +59,6 @@ switch ($view) {
   			case 'add-product':
 				$view = 'add-product';
 				$parent = getCategoryAllByParentId($link);
-				//$child = getCategoryByParentId($link, );
-
 
 				if(isset($_POST["ok"])) {
 					//$uploaddir = "/home/u942717332/public_html/userfiles/";
