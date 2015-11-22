@@ -9,3 +9,25 @@
 .product-pic img {
 	max-width: 100%;
 }
+
+.a-success {
+	display: block !important;
+}
+
+.a-block {
+	display: none;
+}
+
+.faa {
+	font-size: 18px;
+}
+
+/* modal */
+.modal-dialog {
+	padding: 30px;
+	margin: 200px auto 0;
+}
+
+.modal-title {
+	padding: 0 10px 10px;
+}

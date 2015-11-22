@@ -12,6 +12,11 @@
 
 <!-- Main content -->
 <section class="content">
+  <div class="alert alert-success alert-dismissable a-block <?=$msg?>">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" name='close'>&times;</button>
+    <h4>  <i class="icon fa fa-check"></i> Сохранено</h4>
+    Успешно изменен "<?=$product['name']?>"
+  </div>
 
   <!-- Your Page Content Here -->
         <div class="col-md-10 col-md-offset-1">

@@ -28,7 +28,7 @@
             <th>Артикул</th>
             <th>Новинка</th>
             <th>Видимость</th>
-            <th>Удалить</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -69,7 +69,20 @@
 					<td><?=$value['articul']?></td>
 					<td><?=$value['new']?></td>
 					<td><?=$value['visible']?></td>
-					<td><a href="#"><i class="fa fa-trash"></i></a></td>
+					<td>
+						<a href="#" data-toggle="modal" data-target=".mod<?=$value['id']?>"><i class="fa fa-trash faa"></i></a>
+						<div class="modal mod<?=$value['id']?>">
+							<div class="modal-dialog modal-sm modal-content">
+								<h4 class="modal-title text-center">"<?=$value['name']?>"</h4>
+								<form action="" method="post" class="text-center">
+									<input type="hidden" name="productid" value="<?=$value['id']?>">
+									<button type="button" class="btn btn-default" data-dismiss="modal">Отмена <i class="fa fa-reply"></i></button>
+			    					<button type="submit" class="btn btn-danger" name="delete">Удалить <i class="fa fa-times"></i></button> 
+								</form>
+								
+		    				</div>
+		    			</div>
+					</td>
 				</tr>	
 			<?php endforeach;?>
         </tbody>

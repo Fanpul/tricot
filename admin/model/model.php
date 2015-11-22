@@ -84,8 +84,8 @@ function add_category($link) {
 
 // создать продукт
 function add_product($link, $file = false) {
-	$name = $_POST['name'];
-	$desc = $_POST['description'];
+	$name = clear($link, $_POST['name']);
+	$desc = clear($link, $_POST['description']);
 	$cat = $_POST['category'];
 	$price = $_POST['price'];
 	$articul = $_POST['articul'];
@@ -108,8 +108,8 @@ function getProductById($link, $id){
 
 // редактировать продукт
 function saveEditProduct($link, $id, $file = false) {
-	$name = $_POST['name'];
-	$desc = $_POST['description'];
+	$name = clear($link, $_POST['name']);
+	$desc = clear($link, $_POST['description']);
 	$cat = $_POST['category'];
 	$price = $_POST['price'];
 	$articul = $_POST['articul'];
@@ -120,7 +120,18 @@ function saveEditProduct($link, $id, $file = false) {
 		$f = "img='$pic', ";
 	}
 	$query = "UPDATE product SET name='$name', description='$desc', " . $f ."price='$price', articul='$articul', categoryid='$cat', new='$new', visible='$visible' WHERE id='$id'";
-	//print $query;
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
 	return true;
+}
+
+// удалить продукт по ид
+function deleteProductById($link, $id){
+	$query = "DELETE FROM product WHERE id='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
+}
+
+function clear($link, $var) {
+	$varible = mysqli_real_escape_string($link, trim($var));
+	return $varible;
 }

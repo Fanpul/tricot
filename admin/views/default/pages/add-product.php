@@ -12,7 +12,11 @@
 
 <!-- Main content -->
 <section class="content">
-
+  <div class="alert alert-success alert-dismissable a-block <?=$msg?>">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" name='close'>&times;</button>
+    <h4>  <i class="icon fa fa-check"></i> Добавлено</h4>
+    Успешно создан новый продукт
+  </div>
   <!-- Your Page Content Here -->
         <div class="col-md-6 col-md-offset-2">
           <!-- Horizontal Form -->
@@ -53,7 +57,7 @@
                 <div class="form-group">
                   <label for="inputPrice" class="col-sm-3 control-label">Цена(грн.)</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputPrice" name="price">
+                    <input type="text" class="form-control" id="inputPrice" name="price" required>
                   </div>
                 </div>
                 <div class="form-group">

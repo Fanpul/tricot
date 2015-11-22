@@ -110,7 +110,8 @@
               "searching": true,
               "ordering": true,
               "info": false,
-              "autoWidth": true
+              "autoWidth": true,
+              "stateSave": true
             });
 
                 //Initialize Select2 Elements
