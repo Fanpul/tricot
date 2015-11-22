@@ -1,0 +1,11 @@
+.product-pic {
+	height: 230px;
+	width: 250px;
+	padding: 10px;
+	overflow: hidden;
+	border: 1px dashed #ddd;
+}
+
+.product-pic img {
+	max-width: 100%;
+}

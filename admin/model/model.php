@@ -42,12 +42,12 @@ function categories($link) {
 	return $categories;
 }
 
-// получить категорию
-function getCategory($link, $id){
-	$query = "SELECT name FROM category WHERE id='$id'";
+// получить категорию по ид
+function getCategoryById($link, $id){
+	$query = "SELECT id, name, parentid FROM category WHERE id='$id'";
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
-	$row = mysqli_fetch_array($result);
-	return $row;
+	$cat = mysqli_fetch_assoc($result);
+	return $cat;
 }
 
 // Получить все категории по родительскому ид
@@ -58,6 +58,15 @@ function getCategoryAllByParentId($link, $parentid = 0){
 	while($row = mysqli_fetch_assoc($res)){
 		$cat[] = $row;
 	}
+	return $cat;
+}
+
+// Получить родительскую категорию по ид
+function getParentCategoryById($link, $parentid){
+	$query = "SELECT * FROM category WHERE id='$parentid'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	$cat = array();
+	$cat = mysqli_fetch_assoc($result);
 	return $cat;
 }
 
@@ -85,6 +94,33 @@ function add_product($link, $file = false) {
 	$cdate = date("Y-m-d H:i:s");
 	$pic = $file;
 	$query = "INSERT INTO product VALUES('', '$name', '$desc', '$pic', '$price', '$new', '$visible', '$cdate', '$articul', '$cat')";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
+}
+
+// получить продукт по ид
+function getProductById($link, $id){
+	$query = "SELECT * FROM product WHERE id='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	$row = mysqli_fetch_array($result);
+	return $row;
+}
+
+// редактировать продукт
+function saveEditProduct($link, $id, $file = false) {
+	$name = $_POST['name'];
+	$desc = $_POST['description'];
+	$cat = $_POST['category'];
+	$price = $_POST['price'];
+	$articul = $_POST['articul'];
+	$new = $_POST['new'];
+	$visible = $_POST['visible'];
+	$pic = $file;
+	if ($pic) {
+		$f = "img='$pic', ";
+	}
+	$query = "UPDATE product SET name='$name', description='$desc', " . $f ."price='$price', articul='$articul', categoryid='$cat', new='$new', visible='$visible' WHERE id='$id'";
+	//print $query;
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
 	return true;
 }

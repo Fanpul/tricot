@@ -23,8 +23,8 @@
             <th>Название</th>
             <th>Описание</th>
             <th>Цена</th>
-            <th>Категория</th>
             <th>Подкатегория</th>
+            <th>Категория</th>
             <th>Артикул</th>
             <th>Новинка</th>
             <th>Видимость</th>
@@ -54,11 +54,18 @@
 							echo $i;
 						?>
 					</td>
-					<td><?=$value['name']?></td>
+					<td><a href="?view=products&amp;action=edit&amp;id=<?=$value['id']?>"><?=$value['name']?></a></td>
 					<td><?=$value['description']?></td>
 					<td><?=$value['price']?></td>
-					<td><?=$value['categoryid']?></td>
-					<td><?=$value['subcategoryid']?></td>
+					<td><?php 
+						$cat = getCategoryById($link, $value['categoryid']);
+						$pid = $cat['parentid'];
+						echo $cat['name'];?>
+					</td>
+					<td><?php 
+						$pcat = getParentCategoryById($link, $pid);
+						echo $pcat['name'];?>
+					</td>
 					<td><?=$value['articul']?></td>
 					<td><?=$value['new']?></td>
 					<td><?=$value['visible']?></td>

@@ -24,20 +24,20 @@
             <form enctype="multipart/form-data" class="form-horizontal" method="post" >
               <div class="box-body">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Название</label>
-                  <div class="col-sm-10">
+                  <label for="inputEmail3" class="col-sm-3 control-label">Название</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputEmail3" name="name" required>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputDesc3" class="col-sm-2 control-label">Описание</label>
-                  <div class="col-sm-10">
+                  <label for="inputDesc3" class="col-sm-3 control-label">Описание</label>
+                  <div class="col-sm-9">
                     <textarea class="form-control" rows="3" name="description"></textarea>
                   </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputDesc3" class="col-sm-2 control-label">Категория</label>
-                    <div class="col-sm-10">
+                    <label for="inputDesc3" class="col-sm-3 control-label">Категория</label>
+                    <div class="col-sm-9">
                        <select class="form-control select2" name="category" required>
                         <option selected="selected">---</option>
                         <?php foreach ($parent as $key => $value):?>
@@ -51,19 +51,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPrice" class="col-sm-2 control-label">Цена(грн.)</label>
-                  <div class="col-sm-10">
+                  <label for="inputPrice" class="col-sm-3 control-label">Цена(грн.)</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputPrice" name="price">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPrice" class="col-sm-2 control-label">Артикул</label>
-                  <div class="col-sm-10">
+                  <label for="inputPrice" class="col-sm-3 control-label">Артикул</label>
+                  <div class="col-sm-9">
                     <input type="text" class="form-control" id="inputPrice" name="articul">
                   </div>
                 </div>
                 <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
+                  <div class="col-sm-offset-3 col-sm-9">
                     <div class="checkbox">
                       <input type="file" id="exampleInputFile" name="pic"> 
                       <p class="help-block">Фото продукта</p>
@@ -71,7 +71,7 @@
                   </div>
                 </div>                
                 <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
+                  <div class="col-sm-offset-3 col-sm-9">
                     <div class="checkbox">
                       <label>
                         <input type="checkbox" class="minimal" name="new" value="1"> Новинка
@@ -80,7 +80,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
+                  <div class="col-sm-offset-3 col-sm-9">
                     <div class="checkbox">
                       <label>
                         <input type="radio" name="visible" class="minimal" value="1" checked>

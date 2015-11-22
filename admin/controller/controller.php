@@ -4,6 +4,7 @@ require_once MODEL;
 session_start();
 $view = empty($_GET['view']) ? 'products' : $_GET['view'];
 $link = db_connect();
+
 if(isset($_POST['submit'])){
 	auth($link);	
 	redirect();
@@ -37,22 +38,32 @@ switch ($view) {
 		break;
 	case 'products':
 		$func = products($link);
-		$cat = getCategory($link, $id);
+		$cat = getCategoryById($link, $id);
 		switch ($_GET['action'])
 		{
-			case 'edit-product':
-				$view = 'edit-product'; 
-
-/*				$id = abs((int)$_GET['id']);
-				$run_list = pre_edit_trips($link, $id);
-				if(!$id){
-					die("Нечего редактировать");
+			case 'edit':
+  				$view = 'edit-product';
+  				$parent = getCategoryAllByParentId($link);
+				$id = abs((int)$_GET['id']);
+				if ($id) {
+					$product = getProductById($link, $id);
+				} else {
+					redirect();
 				}
-				if(isset($_POST['submit_red'])){	
-					edit_trips($link, $id);
-					header("Location: ?view=trips");
+				if(isset($_POST['ok'])){	
+					$basename =  basename($_FILES['pic']['name']);
+					if (preg_match("/.+(\.[a-z]+)/i", $basename, $r)) {
+						$file = md5(mt_rand(1, 9999999999)) . strtolower($r[1]);
+					} else {
+						$file = $basename;  // по идее не должно сработать
+					}
+					$uploadfile = UPLOADDIR . $file;
+					// сохраняем на сервере картинку
+					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
+					saveEditProduct($link, $id, $file);
+					redirect();
 				}
-				if(isset($_POST['submit_cancel'])){	
+				/*if(isset($_POST['submit_cancel'])){	
 					header("Location: ?view=trips");
 				}*/
   			break;
@@ -61,8 +72,6 @@ switch ($view) {
 				$parent = getCategoryAllByParentId($link);
 
 				if(isset($_POST["ok"])) {
-					//$uploaddir = "/home/u942717332/public_html/userfiles/";
-					$uploaddir = "C:/OpenServer/domains/tri.loc/userfiles/";
 					$basename =  basename($_FILES['pic']['name']);
 					if ($basename) {
 						if (preg_match("/.+(\.[a-z]+)/i", $basename, $r)) {
@@ -71,9 +80,10 @@ switch ($view) {
 							$file = $basename;  // по идее не должно сработать
 						}
 					} else {
-						$file = 'no-image.jpg';
+						$file = 'no_photo.png';
 					}
-					$uploadfile = $uploaddir . $file;
+					$uploadfile = UPLOADDIR . $file;
+					// сохраняем на сервере картинку
 					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
 					add_product($link, $file);
 					redirect();
