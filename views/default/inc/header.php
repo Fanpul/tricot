@@ -27,6 +27,12 @@
 <div class="wrapper-mainer">
 	<div class="top-line">
 		<div class="container">
+			<div class="phone-box">
+				<span>+3 (068) 59 59 335</span>
+				<span>+3 (050) 59 59 335</span>
+				<span>+3 (093) 59 59 335</span>
+				<div class="clear"></div>
+			</div>
 			<div class="client-panel">
 				<p class="client-btn"><span>Кабинет клиента</span></p>	
 				<ul class="menu-top">
@@ -97,7 +103,9 @@
 	</div>
 	<div class="container content-wrapper">
 		<header class="row">
-			<a href="#" class="col-md-2 logo">КОЛИБРИ</a>
+			<a href="#" class="col-md-2 logo">
+				<img src="<?=TEMPLATE?>/img/Kolibri-logi11.png" height="105" width="270" alt="">
+			</a>
 			<div class="functional col-md-offset-2 col-xs-8 ">
 				<form action="" class="col-md-4 col-md-offset-3 search-form">
 					<div class="search-wrap">

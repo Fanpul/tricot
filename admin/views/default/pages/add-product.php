@@ -99,7 +99,7 @@
                 </div>                 
               </div><!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" name="cancel" class="btn btn-default">Отмена</button>
+                <a href="?view=products" class="btn btn-default">Отмена</a> 
                 <button type="submit" name="ok" class="btn btn-info pull-right">Создать</button>
               </div><!-- /.box-footer -->
             </form>

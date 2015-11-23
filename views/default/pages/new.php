@@ -8,11 +8,11 @@
 	<?php if ($value['new']):?>
 		<div class="eyestop"></div>
 	<?php endif;?>
-	<div class="product-pic">
-		<a href="test">
+	<a href="test">
+		<div class="product-pic">
 			<img src="<?=PRODUCTIMG?><?=$value['img']?>" alt="<?=$value['name']?>">
-		</a>
-	</div>
+		</div>
+	</a>
 	<div class="product-name">
 		<a href="?view=product&productid=<?=$value['id']?>"><?=$value['name']?></a>
 	</div>
