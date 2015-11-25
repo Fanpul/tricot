@@ -8,7 +8,7 @@
 	<?php if ($value['new']):?>
 		<div class="eyestop"></div>
 	<?php endif;?>
-	<a href="test">
+	<a href="#">
 		<div class="product-pic">
 			<img src="<?=PRODUCTIMG?><?=$value['img']?>" alt="<?=$value['name']?>">
 		</div>

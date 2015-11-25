@@ -80,9 +80,10 @@ function category($link, $parentid = 0){
 	return $cat;
 }
 
+
 function products($link, $category, $start_pos, $perpage){
 	$query = "SELECT id, name, img, price, new FROM product 
-		WHERE categoryid='$category' AND visible='1' LIMIT $start_pos, $perpage";
+		WHERE parentcategoryid='$category' AND visible='1' LIMIT $start_pos, $perpage";
 	$res = mysqli_query($link, $query) or die(mysqli_error($link));
 	//$_SESSION['count'][$category] = mysql_num_rows($res);
 	$prod = array();
@@ -90,6 +91,18 @@ function products($link, $category, $start_pos, $perpage){
 		$prod[] = $row;
 	}
 	return $prod;
+}
+
+function getProductSubcategoryAll($link, $category, $start_pos, $perpage){
+    $query = "SELECT id, name, img, price, new FROM product 
+        WHERE categoryid='$category' AND visible='1' LIMIT $start_pos, $perpage";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    //$_SESSION['count'][$category] = mysql_num_rows($res);
+    $prod = array();
+    while($row = mysqli_fetch_assoc($res)){
+        $prod[] = $row;
+    }
+    return $prod;
 }
 
 function eyestopper($link, $start_pos, $perpage){

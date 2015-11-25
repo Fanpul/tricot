@@ -87,13 +87,15 @@ function add_product($link, $file = false) {
 	$name = clear($link, $_POST['name']);
 	$desc = clear($link, $_POST['description']);
 	$cat = $_POST['category'];
+	$s = getParentCategoryById($link, $cat);
+	$subcat =  $s['parentid'];
 	$price = $_POST['price'];
 	$articul = $_POST['articul'];
 	$new = $_POST['new'];
 	$visible = $_POST['visible'];
 	$cdate = date("Y-m-d H:i:s");
 	$pic = $file;
-	$query = "INSERT INTO product VALUES('', '$name', '$desc', '$pic', '$price', '$new', '$visible', '$cdate', '$articul', '$cat')";
+	$query = "INSERT INTO product VALUES('', '$name', '$desc', '$pic', '$price', '$new', '$visible', '$cdate', '$articul', '$cat', '$subcat')";
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
 	return true;
 }
