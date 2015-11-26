@@ -3,10 +3,16 @@ defined('KOLIBRI') or die('Access denied');
 require_once MODEL;
 session_start();
 
+if(!isset($_SESSION['cart']))
+{
+	$_SESSION['cart'] = array();
+	$_SESSION['total_sum'] = 0.00;
+	$_SESSION['total_quantity'] = 0;
+}
+
 $view = empty($_GET['view']) ? 'new' : $_GET['view'];
 $link = db_connect();
 $category_list = category($link);
-//$subcategory_list = category($link,);
 
 switch ($view) {
 	case 'new':
@@ -70,6 +76,14 @@ switch ($view) {
 
 		$products = getProductSubcategoryAll($link, $category, $start_pos, $perpage);
 		break;	
+	case 'addtocart':
+		$productid = abs((int)$_GET['productid']);
+		addtocart($productid);
+		//$_SESSION['total_quantity'] = total_items($_SESSION['cart']);
+		$_SESSION['total_sum'] = total_sum($link, $_SESSION['cart']);
+		total_quantity();
+		redirect();
+		break;		
 	case 'auth':
 		# code...
 		break;

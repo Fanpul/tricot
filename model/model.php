@@ -198,3 +198,58 @@ function pagination($page, $pages_count){
     }
     echo "<ul id='pagination-flickr'>".$back.$startpage.$dotleft.$page2left.$page1left."<li class='active'>".$page."</li>".$page1right.$page2right.$dotright.$endpage.$forward."</ul>";
 }
+
+// корзина
+function addtocart($productid, $qty = 1){
+    if(isset($_SESSION['cart'][$productid])){
+        // если в массиве cart уже есть добавляемый товар
+        $_SESSION['cart'][$productid]['qty'] += $qty;
+        return $_SESSION['cart'];
+    }else{
+        // если товар кладется в корзину впервые
+        $_SESSION['cart'][$productid]['qty'] = $qty;
+        return $_SESSION['cart'];
+    }
+}
+
+function total_sum($link, $goods){
+    $total_sum = 0;
+    
+    $str_goods = implode(',', array_keys($goods));
+    $str_goods = trim($str_goods,',');
+    
+    $query = "SELECT *
+                FROM product
+                    WHERE id IN ($str_goods)";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    while($row = mysqli_fetch_assoc($res)){
+        $_SESSION['cart'][$row['id']]['name'] = $row['name'];
+        $_SESSION['cart'][$row['id']]['price'] = $row['price'];
+        $_SESSION['cart'][$row['id']]['img'] = $row['img'];
+        $total_sum += $_SESSION['cart'][$row['id']]['qty'] * $row['price'];
+    }
+    return $total_sum;
+}
+
+function total_quantity(){
+    $_SESSION['total_quantity'] = 0;
+    foreach($_SESSION['cart'] as $key => $value){
+        if(isset($value['price'])){
+            // если получена цена товара из БД - суммируем кол-во
+            $_SESSION['total_quantity'] += $value['qty'];
+        }else{
+            // иначе - удаляем такой ID из сессиии (корзины)
+            unset($_SESSION['cart'][$key]);
+        }
+    }
+}
+
+function delete_from_cart($id){
+    if($_SESSION['cart']){
+        if(array_key_exists($id, $_SESSION['cart'])){
+            $_SESSION['total_quantity'] -= $_SESSION['cart'][$id]['qty'];
+            $_SESSION['total_sum'] -= $_SESSION['cart'][$id]['qty'] * $_SESSION['cart'][$id]['price'];
+            unset($_SESSION['cart'][$id]);
+        }
+    }
+}

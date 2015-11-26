@@ -284,19 +284,12 @@ menu li a{
 	box-sizing: border-box
 }
 
-.basket-wrap {
-	float: right;
-    background: #FEE7D1;
-    padding: 4px 0px 0 15px;
-    height: 32px;
-}
-
-.basket-wrap b{
-	color: #E98B73;
+.basket-wrap b {
+    color: #E98B73;
     font-size: 22px;
     padding-top: 0px;
     padding-right: 0px;
-    line-height: 27px;
+    line-height: 32px;
     text-transform: uppercase;
     text-align: left;
     display: inline-block;
@@ -304,21 +297,27 @@ menu li a{
     font-family: 'Times New Roman', serif;
     margin-right: 19px;
     float: left;
-    margin-top: -4px;
+    /* margin-top: -4px; */
 }
 
-.basket-wrap{
-	
+
+
+.basket-wrap {
     text-decoration: none;
-    padding-bottom: 16px;
-/*    text-align: right;*/
-    display: inline-block;
-    padding-top: 5px;
+    line-height: 32px;
+    float: right;
+    background: #FEE7D1;
+    height: 32px;
 }
 
 .basket-wrap a{
 	text-decoration: none;
 	line-height: 20px;
+}
+
+span.cart-sum {
+	color: #555;
+	font-size: 13px;
 }
 
 .info-but {

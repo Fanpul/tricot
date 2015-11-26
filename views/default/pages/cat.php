@@ -14,12 +14,12 @@
 		</div>
 	</a>
 	<div class="product-name">
-		<a href="?view=product&productid=<?=$value['id']?>"><?=$value['name']?></a>
+		<a href="?view=product&amp;productid=<?=$value['id']?>"><?=$value['name']?></a>
 	</div>
 	<div class="product-price">
 		<div class="price"><span><?=$value['price']?>&nbsp;грн</span></div>
 		<div class="tocart">
-			<a class="tocart-btn" href="?view=addtocart&productid=<?=$value['id']?>">В корзину</a>
+			<a class="tocart-btn" href="?view=addtocart&amp;productid=<?=$value['id']?>">В корзину</a>
 		</div>
 	</div>
 	<div class="clear"></div>

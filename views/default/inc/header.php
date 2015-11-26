@@ -25,6 +25,7 @@
 </head>
 <body>
 <div class="wrapper-mainer">
+<?php //print_r($_SESSION)?>
 	<div class="top-line">
 		<div class="container">
 			<div class="phone-box">
@@ -118,9 +119,9 @@
 						<b>Корзина:</b>
 						<span class="info-but"></span>
 						<span class="cart-sum">
-							<span class="cart-item-count">1</span>
+							<span class="cart-item-count"><?=$_SESSION['total_quantity']?></span>
 							 товар(ов) - 
-							<span class="cart-item-price">100грн.</span>
+							<span class="cart-item-price"><?=$_SESSION['total_sum']?> </span>грн.
 						</span>
 					</a>
 				</div>
