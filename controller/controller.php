@@ -3,11 +3,22 @@ defined('KOLIBRI') or die('Access denied');
 require_once MODEL;
 session_start();
 
-if(!isset($_SESSION['cart']))
-{
+if(!isset($_SESSION['cart'])) {
 	$_SESSION['cart'] = array();
 	$_SESSION['total_sum'] = 0.00;
 	$_SESSION['total_quantity'] = 0;
+}
+if (isset($_POST['reg'])) {
+	registration($link);
+	redirect();
+}
+if(isset($_POST['auth'])){
+	authorization($link);
+	redirect();
+}
+if($_GET['do'] == 'logout'){
+	logout();
+	redirect();
 }
 
 $view = empty($_GET['view']) ? 'new' : $_GET['view'];

@@ -37,10 +37,16 @@
 			<div class="client-panel">
 				<p class="client-btn"><span>Кабинет клиента</span></p>	
 				<ul class="menu-top">
-					<!-- Button that triggers the popup -->
-					<li><a href="<?=PATH?>admin">Админ панель</a></li>
-					<li><a id="js-open-auth" href="#">Вход</a></li>
-					<li><a href="#" class="js-open-reg">Регистрация</a></li>
+					<?php if($_SESSION['auth']['level'] >= 1):?>
+						<li><a href="<?=PATH?>admin">Админ панель</a></li>
+					<?php endif;?>
+					<?php if($_SESSION['auth']['user']):?>
+						<li><a href="?do=logout">Выход</a></li>
+					<?php else:?>
+						<!-- Button that triggers the popup -->
+						<li><a id="js-open-auth" href="#">Вход</a></li>
+						<li><a href="#" class="js-open-reg">Регистрация</a></li>
+					<?php endif;?>
 				</ul>	
 			</div>
 	            <!-- Element to pop up -->
@@ -52,18 +58,18 @@
 	            	<form class="modal-form clear" method="post">
 	            		<div class="form-group">
 							<label for="inputlogin">Логин</label>
-							<input type="text" class="form-control" id="inputlogin" autofocus required>
+							<input type="text" class="form-control" id="inputlogin" name="login" autofocus required>
 						</div>
 						<div class="form-group">
 							<label for="InputPassword">Пароль</label>
-							<input type="password" class="form-control" id="InputPassword" required>
+							<input type="password" class="form-control" id="InputPassword" name="pass" required>
 						</div>
 						<div class="form-group clear">
 							<a class="pull-right b-close js-open-reg" href="#">Регистрация</a>
 						</div>						
 						<div class="form-group clear">
 							<button class="btn-default b-close">Отмена</button>
-							<button type="submit" class="btn-default" name="">Вход</button>
+							<button type="submit" class="btn-default" name="auth">Вход</button>
 						</div>
 					</form>
 	            </div>
@@ -76,27 +82,31 @@
 	            	<form class="modal-form clear" method="post">
 	            		<div class="form-group">
 							<label for="inputlogin">Логин</label>
-							<input type="text" class="form-control" id="inputlogin" autofocus required>
+							<input type="text" class="form-control" id="inputlogin" name="login" value="<?=$_SESSION['reg']['login']?>" autofocus required>
 						</div>
 						<div class="form-group">
 							<label for="InputPassword">Пароль</label>
-							<input type="password" class="form-control" id="InputPassword" required>
+							<input type="password" class="form-control" id="InputPassword" name="pass" required>
 						</div>		            	
 	            		<div class="form-group">
 							<label for="inputname">ФИО</label>
-							<input type="text" class="form-control" id="inputname" required>
+							<input type="text" class="form-control" id="inputname" name="name" value="<?=$_SESSION['reg']['name']?>" required>
 						</div>	  
 	            		<div class="form-group">
 							<label for="inputmail">E-mail</label>
-							<input type="text" class="form-control" id="inputmail" required>
+							<input type="text" class="form-control" id="inputmail" name="email" value="<?=$_SESSION['reg']['email']?>" required>
 						</div>
 	            		<div class="form-group">
 							<label for="js-inputphone">Телефон</label>
-							<input type="text" class="form-control" id="js-inputphone" required>
-						</div>							                  					
+							<input type="text" class="form-control" id="js-inputphone" name="phone" value="<?=$_SESSION['reg']['phone']?>" required>
+						</div>				
+						<div class="form-group">
+							<label for="js-inputaddress">Адрес (город)</label>
+							<input type="text" class="form-control" id="js-inputpaddress" name="address" value="<?=$_SESSION['reg']['address']?>" required>
+						</div>					                  					
 						<div class="form-group clear">
 							<button class="btn-default b-close">Отмена</button>
-							<button type="submit" class="btn-default" name="">Регистрация</button>
+							<button type="submit" class="btn-default" name="reg">Регистрация</button>
 						</div>
 					</form>
 	            </div>
@@ -119,9 +129,13 @@
 						<b>Корзина:</b>
 						<span class="info-but"></span>
 						<span class="cart-sum">
+						<?php if($_SESSION['cart']):?>
 							<span class="cart-item-count"><?=$_SESSION['total_quantity']?></span>
 							 товар(ов) - 
 							<span class="cart-item-price"><?=$_SESSION['total_sum']?> </span>грн.
+						<?else:?>
+							<span class="cart-item-count">Ваша корзина пуста</span>
+						<?endif;?>	
 						</span>
 					</a>
 				</div>

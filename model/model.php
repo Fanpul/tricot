@@ -23,6 +23,10 @@ function clear($link, $var){
     return $var;
 }
 
+function logout() {
+    unset($_SESSION['auth']);
+}
+
 /********auth vk*********/
 //require_once '/../SocialAuther/autoload.php';
 /************************/
@@ -216,7 +220,7 @@ function total_sum($link, $goods){
     $total_sum = 0;
     
     $str_goods = implode(',', array_keys($goods));
-    $str_goods = trim($str_goods,',');
+    $str_goods = trim($str_goods, ',');
     
     $query = "SELECT *
                 FROM product
@@ -250,6 +254,81 @@ function delete_from_cart($id){
             $_SESSION['total_quantity'] -= $_SESSION['cart'][$id]['qty'];
             $_SESSION['total_sum'] -= $_SESSION['cart'][$id]['qty'] * $_SESSION['cart'][$id]['price'];
             unset($_SESSION['cart'][$id]);
+        }
+    }
+}
+
+/**************users***************/
+
+function registration($link){
+    $error = '';
+    $login = clear($link, $_POST['login']);
+    $pass = trim($_POST['pass']);
+    $name = clear($link, $_POST['name']);
+    $email = clear($link, $_POST['email']);
+    $phone = clear($link, $_POST['phone']);
+    $address = clear($link, $_POST['address']);
+
+    if(empty($login)) $error .= '<li>Не указан логин</li>';
+    if(empty($pass)) $error .= '<li>Не указан пароль</li>';
+    if(empty($name)) $error .= '<li>Не указано имя</li>';
+    if(empty($email)) $error .= '<li>Не указан емайл</li>';
+    if(empty($phone)) $error .= '<li>Не указан телефон</li>';
+    if(empty($address)) $error .= '<li>Не указан адрес</li>';
+
+    if(empty($error)){
+        $query = "SELECT id FROM user WHERE login = '$login' LIMIT 1";
+        $res = mysqli_query($link, $query) or die(mysqli_error($link));
+        $row = mysqli_num_rows($res);
+        if($row){
+            $_SESSION['reg']['res'] = "Пользователь с таким логином уже существует";
+            $_SESSION['reg']['name'] = $name;
+            $_SESSION['reg']['email'] = $email;
+            $_SESSION['reg']['phone'] = $phone;
+            $_SESSION['reg']['address'] = $address;
+        }
+        else{
+            $password = md5(md5($pass).md5('Kolibri'));
+            $query = "INSERT INTO user (name, level, email, phone, address, login, password)
+             VALUES ('$name', '1', '$email', '$phone', '$address', '$login', '$password')";
+            $res = mysqli_query($link, $query) or die(mysqli_error($link));
+            if(mysqli_affected_rows($link) > 0){
+                $_SESSION['reg']['res'] = "Вы успешно зарегистрировались";
+                $_SESSION['auth']['user'] = $name;
+                $_SESSION['auth']['user_id'] = mysqli_insert_id($link);
+                $_SESSION['auth']['email'] = $email;
+            }
+        }
+    }
+    else{
+        $_SESSION['reg']['res'] = "Не заполнены обязательные поля: <ul>$error</ul>";
+        $_SESSION['reg']['login'] = $login;
+        $_SESSION['reg']['name'] = $name;
+        $_SESSION['reg']['email'] = $email;
+        $_SESSION['reg']['phone'] = $phone;
+        $_SESSION['reg']['address'] = $address;
+    }
+}
+
+function authorization($link){
+    $login = clear($link, $_POST['login']);
+    $pass = trim($_POST['pass']);
+
+    if(empty($login) or empty($pass)){
+        $_SESSION['auth']['error'] = 'Заполните поля логин/пароль';
+    } 
+    else{
+        $password = md5(md5($pass).md5('Kolibri'));
+        $query = "SELECT id, name, level FROM user WHERE login='$login' AND password='$password'";
+        $res = mysqli_query($link, $query) or die(mysqli_error($link));
+        if(mysqli_num_rows($res) == 1){
+            $row = mysqli_fetch_row($res);
+            $_SESSION['auth']['user_id'] = $row[0];
+            $_SESSION['auth']['user'] = $row[1];
+            $_SESSION['auth']['level'] = $row[2];
+        }
+        else{
+            $_SESSION['auth']['error'] = "Не верные логин/пароль";  
         }
     }
 }
