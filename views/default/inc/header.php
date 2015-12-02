@@ -114,7 +114,7 @@
 	</div>
 	<div class="container content-wrapper">
 		<header class="row">
-			<a href="#" class="col-md-2 logo">
+			<a href="<?=PATH?>" class="col-md-2 logo">
 				<img src="<?=TEMPLATE?>/img/Kolibri-logi11.png" height="105" width="270" alt="">
 			</a>
 			<div class="functional col-md-offset-2 col-xs-8 ">
@@ -125,7 +125,7 @@
 					<input type="submit" class="go-search" name="" value="">
 				</form>
 				<div class="basket-wrap col-md-5">
-					<a href="#">
+					<a href="?view=cart">
 						<b>Корзина:</b>
 						<span class="info-but"></span>
 						<span class="cart-sum">
