@@ -115,7 +115,7 @@
 	<div class="container content-wrapper">
 		<header class="row">
 			<a href="<?=PATH?>" class="col-md-2 logo">
-				<img src="<?=TEMPLATE?>/img/Kolibri-logi11.png" height="105" width="270" alt="">
+				<img src="<?=TEMPLATE?>img/Kolibri-logo.png" height="105" alt="колибри">
 			</a>
 			<div class="functional col-md-offset-2 col-xs-8 ">
 				<form action="" class="col-md-4 col-md-offset-3 search-form">
@@ -143,11 +143,10 @@
 		</header>
 		<div class="row">
 			<ul class="menu-cat">
-				<li><a href="#">Главная </a></li>
-				<li><a href="#">Обратная связь</a></li>
-				<li><a href="#">Отзывы</a></li>
+				<li><a href="<?=PATH?>">Главная</a></li>
+				<li><a href="?view=cart">Корзина</a></li>
 				<li><a href="#">О нас</a></li>
-				<li><a href="#">Корзина</a></li>
+				<li><a href="#">Прайс лист</a></li>
 			</ul>
 		</div>	
 		<div class="row">

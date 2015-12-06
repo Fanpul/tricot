@@ -115,11 +115,11 @@ switch ($view) {
 				}
 				redirect();
 			}
-			/*if(isset($_POST['buy'])){
-				add_order();
-				redirect();
+			if(isset($_POST['buy'])){
+				add_order($link);
+				//redirect();
 				$info = "Мы с вами свяжемся!";
-			}*/
+			}
 			break;	
 	default:
 		$view = 'new';

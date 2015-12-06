@@ -48,36 +48,42 @@
 			<div class="basket-contact col-sm-8 col-sm-offset-2 row">
 				<div class="box-cont col-sm-12">
 					<i class="fa fa-user fa-3x"></i>
-					<input class="cont-fio" type="text" placeholder="Ф. И. О.">
+					<input class="cont-fio" type="text" placeholder="Ф. И. О." name="name" required>
 				</div>
 				<div class="box-cont col-sm-12">
 					<i class="fa fa-phone fa-3x"></i>
-					<input class="cont-phone" type="phone" placeholder="Телефон">
+					<input class="cont-phone" type="phone" placeholder="Телефон" name="phone" required>
 				</div>
 				<div class="box-cont col-sm-12">
 					<i class="fa fa-envelope-o fa-3x"></i>
-					<input class="cont-mail" type="email " placeholder="E-mail">
+					<input class="cont-mail" type="email " placeholder="E-mail" name="email">
 				</div>
 				<div class="box-cont col-sm-12">
 					<i class="fa fa-home fa-3x"></i>
-					<input class="cont-city" type="text" placeholder="Город">
+					<input class="cont-city" type="text" placeholder="Город" name="address" required>
 				</div>
 			</div>	
 			<div class="row box-button-trade text-center">
 					<a class="do-order pull-left" href="#">Продолжить покупки</a>
-					<input class="do-order pull-right" type="submit" value="Заказать">
+					<input class="do-order pull-right" type="submit" value="Заказать" name="buy">
 				</div>
 			</form>
 		<?php else:?>
-			<form action="" method="post" class="row form-basket">
+			<form method="post" class="row form-basket">
 				<div class="row box-button-trade text-center">
 					<a class="do-order pull-left" href="#">Продолжить покупки</a>
-					<input class="do-order pull-right" type="submit" value="Заказать">
+					<input class="do-order pull-right" name="buy" type="submit" value="Заказать">
 				</div>
 			</form>
 	<?php endif;?>
 	</div>
 <?php else:?>
-	<h2 class="text-center">Ваша корзина пуста.</h2>	
+	
+	<?php
+		if ($info):?>
+			<h2 class="text-center"><?=$_SESSION['order']['res']?></h2>
+		<?php else: ?>
+			<h2 class="text-center">Ваша корзина пуста.</h2>
+		<?php endif;?>
 <?php endif;?>	
 </div>

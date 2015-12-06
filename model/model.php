@@ -319,16 +319,109 @@ function authorization($link){
     } 
     else{
         $password = md5(md5($pass).md5('Kolibri'));
-        $query = "SELECT id, name, level FROM user WHERE login='$login' AND password='$password'";
+        $query = "SELECT id, name, level, email FROM user WHERE login='$login' AND password='$password'";
         $res = mysqli_query($link, $query) or die(mysqli_error($link));
         if(mysqli_num_rows($res) == 1){
             $row = mysqli_fetch_row($res);
             $_SESSION['auth']['user_id'] = $row[0];
             $_SESSION['auth']['user'] = $row[1];
             $_SESSION['auth']['level'] = $row[2];
+            $_SESSION['auth']['email'] = $row[3];
         }
         else{
             $_SESSION['auth']['error'] = "Не верные логин/пароль";  
         }
     }
 }
+
+function add_customer($link, $name, $email, $phone, $address){
+    $query = "INSERT INTO user (name, email, phone, address) VALUES ('$name', '$email', '$phone', '$address')";
+    $res = mysqli_query($link, $query);
+    if(mysqli_affected_rows($link) > 0){
+        $_SESSION['order']['email'] = $email;
+        return mysqli_insert_id($link);
+    }
+    else{
+        $_SESSION['order']['res'] = "Ошибка при регистрации заказа: <ul>$error</ul>";
+        $_SESSION['order']['name'] = $name;
+        $_SESSION['order']['email'] = $email;
+        $_SESSION['order']['phone'] = $phone;
+        $_SESSION['order']['address'] = $address;
+        return false;       
+    }
+}
+
+/**********************order************************/
+function add_order($link){
+    if($_SESSION['auth']['user']) 
+        $customer_id = $_SESSION['auth']['user_id'];
+    if(!$_SESSION['auth']['user']){
+        $error = '';
+        $name = clear($link, $_POST['name']);
+        $email = clear($link, $_POST['email']);
+        $phone = clear($link, $_POST['phone']);
+        $address = clear($link, $_POST['address']);
+        if(empty($name)) $error .= '<li>Не указано имя</li>';
+        if(empty($email)) $error .= '<li>Не указан емайл</li>';
+        if(empty($phone)) $error .= '<li>Не указан телефон</li>';
+        if(empty($address)) $error .= '<li>Не указан адрес</li>';
+        if(empty($error)){
+            $customer_id = add_customer($link, $name, $email, $phone, $address);
+            if(!$customer_id) return false;
+        }
+        else{
+            $_SESSION['order']['res'] = "Не заполнены обязательные поля: <ul>$error</ul>";
+            $_SESSION['order']['name'] = $name;
+            $_SESSION['order']['email'] = $email;
+            $_SESSION['order']['phone'] = $phone;
+            $_SESSION['order']['address'] = $address;
+            return false;
+        }
+    }
+    save_order($link, $customer_id);
+}
+
+function save_order($link, $customer_id){
+    $cdate = date("Y-m-d");
+    $query = "INSERT INTO `order` (userid, cdate) VALUES ('$customer_id', '$cdate')";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    if(mysqli_affected_rows($link) == -1){
+        mysqli_query($link, "DELETE FROM user WHERE userid = '$customer_id' AND login = ''");
+        return false;
+    }
+    $order_id = mysqli_insert_id($link);
+    foreach ($_SESSION['cart'] as $goods_id => $value) {
+        $val .= "('$order_id', '$goods_id', '{$value['qty']}'),"; 
+    }
+    $val = substr($val, 0, -1);
+    $query = "INSERT INTO `orderproduct` (orderid, productid, quantity) VALUES $val";
+    mysqli_query($link, $query) or die(mysqli_error($link));
+    if(mysqli_affected_rows($link) ==-1){
+        mysqli_query($link, "DELETE FROM order WHERE orderid = '$order_id'");
+        mysqli_query($link, "DELETE FROM user WHERE userid = '$customer_id' AND login = '' ");
+        return false;
+    }
+    if($_SESSION['auth']['email'])
+        $email = $_SESSION['auth']['email'];
+    else $email = $_SESSION['order']['email'];
+    mail_order($order_id, $email);
+    unset($_SESSION['cart']);
+    unset($_SESSION['total_sum']);
+    unset($_SESSION['total_quantity']);
+    $_SESSION['order']['res'] = "Спасибо за ваш заказ! Мы с вами свяжемся в ближайшее время.";
+    return true;
+}
+
+function mail_order($order_id, $email){
+    $subject = "Заказ в интернет-магазине kolibri";
+    $headers .= "Content-type: text/plain; charset=utf-8\r\n";
+    $headers .= "From: kolibri.com.ua";
+    $mail_body = "Благодарим Вас за заказ!\r\nНомер Вашего заказа - {$order_id}\r\n\r\n
+    Заказанные товары:\r\n";
+    foreach ($_SESSION['cart'] as $goods_id => $value) {
+        $mail_body .= "Наименование: {$value['name']}, Цена: {$value['price']}, Количество: {$value['qty']} шт.\r\n";
+    }
+    $mail_body .= "\r\nИтого: {$_SESSION['total_quantity']} на сумму: {$_SESSION['total_sum']}";
+    mail($email, $subject, $mail_body, $headers);
+    mail(ADMIN_EMAIL, $subject, $mail_body, $headers);
+} 
