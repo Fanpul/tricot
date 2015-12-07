@@ -29,9 +29,9 @@ $(document).ready(function() {
 
 	//Плавный скролл до блока .div по клику на .scroll
 	//Документация: https://github.com/flesler/jquery.scrollTo
-	$("a.scroll").click(function() {
-		$.scrollTo($(".div"), 800, {
-			offset: -90
+	$("a#js-reg-pls").click(function() {
+		$.scrollTo($(".nocomment-text"), 100, {
+			offset: -350,
 		});
 	});
 

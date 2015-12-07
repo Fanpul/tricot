@@ -22,6 +22,8 @@
 	<link rel="stylesheet" href="<?=TEMPLATE?>css/fonts.css" />
 	<link rel="stylesheet" href="<?=TEMPLATE?>css/main.css" />
 	<link rel="stylesheet" href="<?=TEMPLATE?>css/media.css" />
+	
+	<script src="<?=TEMPLATE?>libs/jquery/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 <div class="wrapper-mainer">
@@ -37,7 +39,7 @@
 			<div class="client-panel">
 				<p class="client-btn"><span>Кабинет клиента</span></p>	
 				<ul class="menu-top">
-					<?php if($_SESSION['auth']['level'] >= 1):?>
+					<?php if($_SESSION['auth']['level'] >= 2):?>
 						<li><a href="<?=PATH?>admin">Админ панель</a></li>
 					<?php endif;?>
 					<?php if($_SESSION['auth']['user']):?>

@@ -99,28 +99,35 @@ switch ($view) {
 		# code...
 		break;
 	case 'cart':
-			if(isset($_GET['id'], $_GET['qty'])){
-				$productid = abs((int)$_GET['id']);
-				$qty = abs((int)$_GET['qty']);
-				$qty = $qty - $_SESSION['cart'][$productid]['qty'];
-				addtocart($productid, $qty);
-				$_SESSION['total_sum'] = total_sum($link, $_SESSION['cart']);
-				total_quantity();
-				redirect();
+		if(isset($_GET['id'], $_GET['qty'])){
+			$productid = abs((int)$_GET['id']);
+			$qty = abs((int)$_GET['qty']);
+			$qty = $qty - $_SESSION['cart'][$productid]['qty'];
+			addtocart($productid, $qty);
+			$_SESSION['total_sum'] = total_sum($link, $_SESSION['cart']);
+			total_quantity();
+			redirect();
+		}
+		if(isset($_GET['delete'])){
+			$id = abs((int)$_GET['delete']);
+			if($id){
+				delete_from_cart($id);
 			}
-			if(isset($_GET['delete'])){
-				$id = abs((int)$_GET['delete']);
-				if($id){
-					delete_from_cart($id);
-				}
-				redirect();
-			}
-			if(isset($_POST['buy'])){
-				add_order($link);
-				//redirect();
-				$info = "Мы с вами свяжемся!";
-			}
-			break;	
+			redirect();
+		}
+		if(isset($_POST['buy'])){
+			add_order($link);
+			//redirect();
+			$info = "Мы с вами свяжемся!";
+		}
+		break;	
+	case 'product':
+		$productid = abs((int)$_GET['productid']);
+		if (!$productid) {
+			redirect();
+		}
+		$product = getProductByID($link, $productid);
+	break;		
 	default:
 		$view = 'new';
 		break;

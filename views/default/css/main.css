@@ -240,13 +240,9 @@ header {
 }
 
 .logo {
-/*	background: yellow;*/
-	height: 70px;
-	color: palevioletred;
-	text-decoration: none;
-	line-height: 70px;
-	text-align: center;
-	font-size: 3.1em
+	position: relative;
+    left: 0;
+    top: -9px;
 }
 menu{
 	font-size: 10px;
@@ -1011,24 +1007,19 @@ border-color: #f7a238;
 }
 
 .product-info {
-/*	background: azure;*/
 	border:2px solid #eee;
-	height: 1000px;
 	margin-top: 20px;
 	padding: 20px;
 }
 
 .product-img-link {
-	
-	height: 321px;
 	display: block;
 	border: 10px solid #eee;
 	box-sizing: border-box;
 	padding: 0;
 }
 .product-img-link img{
-	width: 290px;
-	height: 300px;
+	width: 237px;
 }
 
 .item-name {
@@ -1053,7 +1044,6 @@ border-color: #f7a238;
 
 
 .presence-box {
-	height: 50px;
 	line-height: 40px;
 	margin: 0 0 20px;
 }
@@ -1197,6 +1187,14 @@ border-color: #f7a238;
 .reviews-area:focus {
 	border-color: hotpink;
 	height: 150px;
+}
+
+.nocomment-text {
+	background: #F7F7F7;
+	padding: 10px;
+	margin: 20px 0 0 0;
+	text-align: center;
+	color: #765F59;;
 }
 
 .comment-user {

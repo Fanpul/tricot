@@ -97,6 +97,13 @@ function products($link, $category, $start_pos, $perpage){
 	return $prod;
 }
 
+function getProductByID($link, $id){
+    $query = "SELECT * FROM product WHERE id='$id' AND visible='1'";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    $product = mysqli_fetch_assoc($res);
+    return $product;
+}
+
 function getProductSubcategoryAll($link, $category, $start_pos, $perpage){
     $query = "SELECT id, name, img, price, new FROM product 
         WHERE categoryid='$category' AND visible='1' LIMIT $start_pos, $perpage";
@@ -297,6 +304,7 @@ function registration($link){
                 $_SESSION['auth']['user'] = $name;
                 $_SESSION['auth']['user_id'] = mysqli_insert_id($link);
                 $_SESSION['auth']['email'] = $email;
+                $_SESSION['auth']['phone'] = $phone;
             }
         }
     }
@@ -319,7 +327,7 @@ function authorization($link){
     } 
     else{
         $password = md5(md5($pass).md5('Kolibri'));
-        $query = "SELECT id, name, level, email FROM user WHERE login='$login' AND password='$password'";
+        $query = "SELECT id, name, level, email, phone FROM user WHERE login='$login' AND password='$password'";
         $res = mysqli_query($link, $query) or die(mysqli_error($link));
         if(mysqli_num_rows($res) == 1){
             $row = mysqli_fetch_row($res);
@@ -327,6 +335,7 @@ function authorization($link){
             $_SESSION['auth']['user'] = $row[1];
             $_SESSION['auth']['level'] = $row[2];
             $_SESSION['auth']['email'] = $row[3];
+            $_SESSION['auth']['phone'] = $row[4];
         }
         else{
             $_SESSION['auth']['error'] = "Не верные логин/пароль";  
@@ -338,7 +347,10 @@ function add_customer($link, $name, $email, $phone, $address){
     $query = "INSERT INTO user (name, email, phone, address) VALUES ('$name', '$email', '$phone', '$address')";
     $res = mysqli_query($link, $query);
     if(mysqli_affected_rows($link) > 0){
+        $_SESSION['order']['name'] = $name;
         $_SESSION['order']['email'] = $email;
+        $_SESSION['order']['phone'] = $phone;
+        $_SESSION['order']['address'] = $address;
         return mysqli_insert_id($link);
     }
     else{
@@ -401,10 +413,27 @@ function save_order($link, $customer_id){
         mysqli_query($link, "DELETE FROM user WHERE userid = '$customer_id' AND login = '' ");
         return false;
     }
-    if($_SESSION['auth']['email'])
+
+    if($_SESSION['auth']['email']){
         $email = $_SESSION['auth']['email'];
-    else $email = $_SESSION['order']['email'];
+    } else {
+        $email = $_SESSION['order']['email'];
+    }
+
+    if($_SESSION['auth']['user']) {
+        $name = $_SESSION['auth']['user'];
+    } else {
+        $name = $_SESSION['order']['name'];
+    }
+
+    if($_SESSION['auth']['phone']) {
+        $phone = $_SESSION['auth']['phone'];
+    } else {
+        $phone = $_SESSION['order']['phone'];
+    }
+
     mail_order($order_id, $email);
+    mailToAdmin($order_id, $email, $name, $phone);
     unset($_SESSION['cart']);
     unset($_SESSION['total_sum']);
     unset($_SESSION['total_quantity']);
@@ -419,9 +448,24 @@ function mail_order($order_id, $email){
     $mail_body = "Благодарим Вас за заказ!\r\nНомер Вашего заказа - {$order_id}\r\n\r\n
     Заказанные товары:\r\n";
     foreach ($_SESSION['cart'] as $goods_id => $value) {
-        $mail_body .= "Наименование: {$value['name']}, Цена: {$value['price']}, Количество: {$value['qty']} шт.\r\n";
+        $mail_body .= "Наименование: {$value['name']}, Цена: {$value['price']} грн., Количество: {$value['qty']} шт.\r\n";
     }
-    $mail_body .= "\r\nИтого: {$_SESSION['total_quantity']} на сумму: {$_SESSION['total_sum']}";
+    $mail_body .= "\r\nИтого: {$_SESSION['total_quantity']} шт. на сумму: {$_SESSION['total_sum']} грн.";
     mail($email, $subject, $mail_body, $headers);
+    //mailToAdmin($order_id, $email);
+    //mail(ADMIN_EMAIL, $subject, $mail_body, $headers);
+} 
+
+function mailToAdmin($order_id, $email, $name, $phone){
+    $subject = "Заказ в интернет-магазине kolibri";
+    $headers .= "Content-type: text/plain; charset=utf-8\r\n";
+    $headers .= "From: kolibri.com.ua";
+    $mail_body = "Новый заказ №{$order_id}\r\n
+    Имя заказчика: {$name}, Телефон: {$phone}\r\n\r\n
+    Заказанные товары:\r\n";
+    foreach ($_SESSION['cart'] as $goods_id => $value) {
+        $mail_body .= "Наименование: {$value['name']}, Цена: {$value['price']} грн., Количество: {$value['qty']} шт.\r\n";
+    }
+    $mail_body .= "\r\nИтого: {$_SESSION['total_quantity']} шт. на сумму: {$_SESSION['total_sum']} грн.";
     mail(ADMIN_EMAIL, $subject, $mail_body, $headers);
 } 
