@@ -363,6 +363,14 @@ function add_customer($link, $name, $email, $phone, $address){
     }
 }
 
+function getUserNameById($link, $userid){
+    $query = "SELECT name FROM user WHERE id='$userid'";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    $user = array();
+    $user = mysqli_fetch_assoc($res);
+    return $user;
+}
+
 /**********************order************************/
 function add_order($link){
     if($_SESSION['auth']['user']) 
@@ -469,3 +477,25 @@ function mailToAdmin($order_id, $email, $name, $phone){
     $mail_body .= "\r\nИтого: {$_SESSION['total_quantity']} шт. на сумму: {$_SESSION['total_sum']} грн.";
     mail(ADMIN_EMAIL, $subject, $mail_body, $headers);
 } 
+
+/***********************comment*************************/
+function getCommentAll($link, $productid){
+    $query = "SELECT * FROM comment WHERE productid='$productid' ORDER BY id DESC";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    $comment = array();
+    while($row = mysqli_fetch_assoc($res)){
+        $comment[] = $row;
+    }
+    return $comment;
+}
+
+function addComment($link){
+    $productid = abs((int)$_GET['productid']);
+    $userid = $_SESSION['auth']['user_id'];
+    $cdate = date("Y-m-d");
+    $text = clear($link, $_POST['reviews']);
+
+    $query = "INSERT INTO `comment` (productid, userid, cdate, text) VALUES ('$productid', '$userid', '$cdate', '$text')";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    return true;
+}

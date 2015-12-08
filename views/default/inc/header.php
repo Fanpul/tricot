@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="<?=TEMPLATE?>css/fonts.css" />
 	<link rel="stylesheet" href="<?=TEMPLATE?>css/main.css" />
 	<link rel="stylesheet" href="<?=TEMPLATE?>css/media.css" />
-	
+
 	<script src="<?=TEMPLATE?>libs/jquery/jquery-1.11.1.min.js"></script>
 </head>
 <body>

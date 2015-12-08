@@ -127,6 +127,13 @@ switch ($view) {
 			redirect();
 		}
 		$product = getProductByID($link, $productid);
+		$comment = getCommentAll($link, $productid);
+		
+		if (isset($_POST['send'])) {
+			addComment($link);
+			redirect();
+		}
+
 	break;		
 	default:
 		$view = 'new';

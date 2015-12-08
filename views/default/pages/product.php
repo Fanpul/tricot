@@ -30,9 +30,9 @@
 
 	<div class="reviews-box row col-md-12">
 		<?php if($_SESSION['auth']['user_id']):?>
-			<form action="" method="GET">
-				<textarea class="reviews-area" name="reviews" id="" cols="30" rows="10"></textarea>
-				<input type="submit" value="Отправить">
+			<form method="post">
+				<textarea class="reviews-area" name="reviews" cols="30" rows="10"></textarea>
+				<input type="submit" value="Отправить" name="send">
 				<input type="reset">
 			</form>
 		<?php else:?>
@@ -40,16 +40,21 @@
 				<a href="#" id="js-reg-pls" class="js-open-reg">Зарегистрируйтесь</a>, чтобы оставить комментарий.
 			</div>
 		<?php endif;?>
-		<div class="rewiew-user-box col-md-12">
-			<div class="comment-user row">
-				<img src="<?=TEMPLATE?>img/comment.png" alt="" class="avatar col-md-2">
-				<div class="info-and-comment col-md-8 col-md-offset-1">
-					<span class="name">Мария</span>
-					<span class="date">12-11-2014</span>
-					<div class="comment-field">Взяла неделю назад эту кофточку. Очень довольна качеством. </div>
+		<?php foreach ($comment as $value):?>
+			<div class="rewiew-user-box col-md-12">
+				<div class="comment-user row">
+					<img src="<?=TEMPLATE?>img/comment.png" alt="" class="avatar col-md-2">
+					<div class="info-and-comment col-md-8 col-md-offset-1">
+						<span class="name">
+							<?php $user = getUserNameById($link, $value['userid']);?>
+							<?=$user['name']?>
+						</span>
+						<span class="date"><?=$value['cdate']?></span>
+						<div class="comment-field"><?=$value['text']?></div>
+					</div>
 				</div>
 			</div>
-		</div>
+		<?php endforeach;?>	
 
 	</div>
 </div>
