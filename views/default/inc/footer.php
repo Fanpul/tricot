@@ -16,6 +16,7 @@
 <div class="modal-window" id="js-callme-modal">
 	<div class="modal-header">
 		<h3>Оставьте ваши контакты и мы вам перезвоним</h3>
+		<span class="btn-close b-close"></span>
 	</div>
 	<form class="modal-form clear" method="post">
 		<div class="form-group">
