@@ -40,8 +40,24 @@
                 });
         });
 
+        $('.js-open-call-me').bind('click', function(e) {
+                // Prevents the default action to be triggered. 
+                e.preventDefault();
+
+                // Triggering bPopup when click event is fired
+                $('#js-callme-modal').bPopup({
+                    //closeClass: 'b-close',
+                    modalClose: false,
+                    easing: 'easeInOutCubic', //uses jQuery easing plugin
+                    speed: 600,
+                    transition: 'slideDown',
+                    transitionClose: 'slideDown',
+                    escClose: true
+                });
+        });
         //phone mask
         $("#js-inputphone").mask("+380 (99) 999-99-99");
+        $("#js-callme-phone").mask("+380 (99) 999-99-99");
 
 
     });

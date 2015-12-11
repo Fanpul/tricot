@@ -32,7 +32,7 @@
 
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
+            <li class="header">Товары</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">
               <a href="#"><i class="fa fa-plus"></i></i> <span>Создать...</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -41,8 +41,12 @@
                 <li><a href="?view=products&amp;action=add-product">Добавить продукт</a></li>
               </ul>
             </li>
-            <li><a href="?view=products"><i class="fa fa-shopping-cart"></i></i> <span>Все продукты</span></a></li>
-            <li><a href="#"><i class="fa fa-link"></i> <span>Все категории</span></a></li>
+            <li><a href="?view=products"><i class="fa fa-shopping-cart"></i> <span>Все продукты</span></a></li>
+            <li><a href="?view=categories"><i class="fa fa-database"></i> <span>Все категории</span></a></li>
+            <li><a href="?view=order"><i class="fa fa-credit-card"></i> <span>Заказы</span></a></li>
+            <li class="header">Выход</li>
+            <li><a href="<?=MAINPATH?>"><i class="fa fa-hand-o-right"></i> <span>В магазин</span></a></li>
+            <li><a href="?do=logout"><i class="fa fa-sign-out"></i> <span>Выйти</span></a></li>
           </ul><!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

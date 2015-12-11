@@ -1,8 +1,9 @@
 <?php 
 	defined('KOLIBRI') or die('Access denied');
-	$_SESSION['auth']['adminn'] = true;
-if(!$_SESSION['auth']['adminn']):
-	header('Location: http://tri.loc/');
+	//$_SESSION['auth']['level'] = 3;
+if($_SESSION['auth']['level'] < 2 ):
+	$path = MAINPATH;
+	header("Location: $path");
  else:
 	require_once 'inc/header.php';
 	require_once 'inc/sidebar.php';

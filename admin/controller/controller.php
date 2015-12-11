@@ -20,6 +20,9 @@ if($_GET['do'] == 'logout'){
 
 switch ($view) {
 	case 'categories':
+		$category = getCategoryAllByParentId($link);
+
+
 		switch ($_GET['action']) {
 			case 'add-category':
 				$view = 'add-category';
@@ -29,10 +32,6 @@ switch ($view) {
 					add_category($link);
 					redirect();
 				}
-				break;
-			
-			default:
-				# code...
 				break;
 		}
 		break;
@@ -102,8 +101,10 @@ switch ($view) {
   			break;
 		}	
 		break;
+	case 'order':
+  		break;
 	default:
-		$view = 'main';
+		$view = 'products';
 		break;
 }
 require_once TEMPLATE.'index.php';

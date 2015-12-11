@@ -690,6 +690,13 @@ ul.menu-cat li a:hover {
     font-size: 16px;
 }
 
+.modal-window .modal-header h2 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(255,255,255,0);
+}
+
 .btn-close {
 	cursor: pointer;
 	height: 30px;
@@ -1152,7 +1159,8 @@ border-color: #f7a238;
 .reviews-box input[type="submit"]{
 	background:#6FC5C9;
 	border: none;
-	padding: 10px;
+	line-height: 37px;
+    height: 37px;
 	border-radius: 10px;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -1161,7 +1169,8 @@ border-color: #f7a238;
 .reviews-box input[type="reset"]{
 	background: #6FC5C9;
 	border: none;
-	padding: 10px;
+	line-height: 37px;
+    height: 37px;
 	border-radius: 10px;
 	text-transform: uppercase;
 	font-weight: bold;
@@ -1462,5 +1471,22 @@ background: linear-gradient(to bottom, rgba(242,247,245,1) 0%,rgba(232,229,249,0
 	border: 20px solid black;
 }
 
-
-
+/*********call me******/
+.call-me {
+	right: 0;
+    position: fixed;
+    top: 40%;
+   // right: -40px;
+    width: 40px;
+    height: 215px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 100;
+   background-color: #6FC5C9;
+    background-image: url("../img/call-me.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+.call-me:hover {
+	opacity: .7;
+}
