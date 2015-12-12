@@ -50,7 +50,7 @@
                     modalClose: false,
                     easing: 'easeInOutCubic', //uses jQuery easing plugin
                     speed: 600,
-                    transition: 'slideDown',
+                    //transition: 'slideDown',
                     transitionClose: 'slideDown',
                     escClose: true
                 });

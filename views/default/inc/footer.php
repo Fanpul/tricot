@@ -11,7 +11,7 @@
 	<div class="footer-copy"><div class="container"><p>Интернет-магазин "Колибри" &copy; 2015-2016 г.</p></div></div>
 </footer>
 
-<div class="call-me js-open-call-me"></div>	
+<div class="call-me js-open-call-me" onclick="javascript: void(0);"></div>	
 <!-- Element to pop up -->
 <div class="modal-window" id="js-callme-modal">
 	<div class="modal-header">
