@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 	//Плавный скролл до блока .div по клику на .scroll
 	//Документация: https://github.com/flesler/jquery.scrollTo
-	$("a#js-reg-pls").click(function() {
+	$("a#block").click(function() {
 		$.scrollTo($(".nocomment-text"), 100, {
 			offset: -350,
 		});
@@ -67,21 +67,20 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	//Аякс отправка форм
+/*	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
-	$("forms").submit(function() {
+	$("#js-call-me-submit").submit(function() {
 		$.ajax({
 			type: "GET",
 			url: "mail.php",
-			data: $("form").serialize()
+			data: $(this).serialize()
 		}).done(function() {
-			alert("Спасибо за заявку!");
-			setTimeout(function() {
-				$.fancybox.close();
-			}, 1000);
+			//alert("Спасибо за заявку!");
+			var call = callme.close();
+			setTimeout(call, 1000);
 		});
 		return false;
-	});
+	});*/
 
 	// Пересчет кол-ва товаров в корзине
 	$('.js-qty').each(function(){

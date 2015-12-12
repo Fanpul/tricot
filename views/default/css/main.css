@@ -1489,3 +1489,18 @@ background: linear-gradient(to bottom, rgba(242,247,245,1) 0%,rgba(232,229,249,0
 .call-me:hover {
 	opacity: .7;
 }
+
+.toast-bottom-center {
+  top: 20%;
+  right: 0;
+  width: 100%;
+}
+
+.toast-title,
+.toast-message {
+	color: #fff;
+}
+#toast-container>div {
+	opacity: 1;
+	box-shadow: 0 0 12px #000;
+}

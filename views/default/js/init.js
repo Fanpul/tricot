@@ -20,8 +20,9 @@
                 easing: 'easeInOutCubic', //uses jQuery easing plugin
                 speed: 600,
                 transition: 'slideDown',
-                transitionClose: 'slideDown',
-                escClose: true
+                transitionClose: 'fadeOut',
+                escClose: true,
+                positionStyle: 'fixed'
             });
         });
         $('.js-open-reg').bind('click', function(e) {
@@ -35,8 +36,9 @@
                     easing: 'easeInOutCubic', //uses jQuery easing plugin
                     speed: 600,
                     transition: 'slideDown',
-                    transitionClose: 'slideDown',
-                    escClose: true
+                    transitionClose: 'fadeOut',
+                    escClose: true,
+                    positionStyle: 'fixed'
                 });
         });
 
@@ -45,16 +47,53 @@
                 e.preventDefault();
 
                 // Triggering bPopup when click event is fired
-                $('#js-callme-modal').bPopup({
+                var callme = $('#js-callme-modal').bPopup({
                     //closeClass: 'b-close',
                     modalClose: false,
                     easing: 'easeInOutCubic', //uses jQuery easing plugin
                     speed: 600,
                     //transition: 'slideDown',
-                    transitionClose: 'slideDown',
+                    //transitionClose: 'slideDown',
                     escClose: true
                 });
         });
+
+                //Аякс отправка форм
+        //Документация: http://api.jquery.com/jquery.ajax/
+        $("#js-call-me-submit").submit(function() {
+            $.ajax({
+                type: "GET",
+                url: "mail.php",
+                data: $(this).serialize()
+            }).done(function() {
+                //alert("Спасибо за заявку!");
+                
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-bottom-center",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "3000",
+  "hideDuration": "5000",
+  "timeOut": "5000",
+  "extendedTimeOut": "5000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+toastr.info("Спасибо за заявку", "Отправлено");
+                setTimeout(function() {
+                    $('#js-callme-modal').bPopup().close();
+                }, 0);
+            });
+            return false;
+        });
+
         //phone mask
         $("#js-inputphone").mask("+380 (99) 999-99-99");
         $("#js-callme-phone").mask("+380 (99) 999-99-99");
