@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="wrapper-mainer">
-<?php //print_r($_SESSION)?>
+<?php //print_r($_SESSION) ?>
 	<div class="top-line">
 		<div class="container">
 			<div class="phone-box">

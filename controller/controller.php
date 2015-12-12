@@ -10,15 +10,15 @@ if(!isset($_SESSION['cart'])) {
 }
 if (isset($_POST['reg'])) {
 	registration($link);
-	redirect();
+	$msg = 'Вы успешно зарегистрировались!';
 }
 if(isset($_POST['auth'])){
 	authorization($link);
-	redirect();
+	$msg = 'Вы успешно авторизировались!';
 }
 if($_GET['do'] == 'logout'){
 	logout();
-	redirect();
+	$msg = 'Вы успешно вышли!';
 }
 
 $view = empty($_GET['view']) ? 'new' : $_GET['view'];
@@ -126,14 +126,14 @@ switch ($view) {
 		if (!$productid) {
 			redirect();
 		}
+		if (isset($_POST['send'])) {
+			addComment($link);
+			$msg ='Сообщение отправлено!';
+		}
 		$product = getProductByID($link, $productid);
 		$comment = getCommentAll($link, $productid);
 		
-		if (isset($_POST['send'])) {
-			addComment($link);
-			redirect();
-		}
-
+	
 	break;		
 	default:
 		$view = 'new';

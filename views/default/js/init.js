@@ -58,35 +58,33 @@
                 });
         });
 
-                //Аякс отправка форм
+        //Аякс отправка форм
         //Документация: http://api.jquery.com/jquery.ajax/
         $("#js-call-me-submit").submit(function() {
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: "mail.php",
                 data: $(this).serialize()
             }).done(function() {
-                //alert("Спасибо за заявку!");
-                
-
-toastr.options = {
-  "closeButton": true,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-bottom-center",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "3000",
-  "hideDuration": "5000",
-  "timeOut": "5000",
-  "extendedTimeOut": "5000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-toastr.info("Спасибо за заявку", "Отправлено");
+            
+            toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-bottom-center",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "3000",
+              "hideDuration": "5000",
+              "timeOut": "5000",
+              "extendedTimeOut": "5000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+            toastr.info("Спасибо за заявку!", "Отправлено");
                 setTimeout(function() {
                     $('#js-callme-modal').bPopup().close();
                 }, 0);
@@ -100,5 +98,12 @@ toastr.info("Спасибо за заявку", "Отправлено");
 
         // call me btn
         $('.call-me').delay( 1000 ).animate({"right": "0px"}, 500);
+
+        // message auth ok
+        var div = $('.message-container').is(':visible');
+        if (div) {
+            $('.message-container').delay( 2000 ).fadeOut();
+        }
+        console.log(div);
     });
 })(jQuery);
