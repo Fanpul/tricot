@@ -18,7 +18,7 @@ if(isset($_POST['auth'])){
 }
 if($_GET['do'] == 'logout'){
 	logout();
-	$msg = 'Вы успешно вышли!';
+	redirect();
 }
 
 $view = empty($_GET['view']) ? 'new' : $_GET['view'];
