@@ -59,7 +59,7 @@
         $("#js-inputphone").mask("+380 (99) 999-99-99");
         $("#js-callme-phone").mask("+380 (99) 999-99-99");
 
-
+        // call me btn
+        $('.call-me').delay( 1000 ).animate({"right": "0px"}, 500);
     });
-
 })(jQuery);

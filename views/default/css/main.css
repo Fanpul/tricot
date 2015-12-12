@@ -1473,16 +1473,15 @@ background: linear-gradient(to bottom, rgba(242,247,245,1) 0%,rgba(232,229,249,0
 
 /*********call me******/
 .call-me {
-	right: 0;
     position: fixed;
     top: 40%;
-   // right: -40px;
+    right: -40px;
     width: 40px;
     height: 215px;
     cursor: pointer;
     overflow: hidden;
     z-index: 100;
-   background-color: #6FC5C9;
+   	background-color: #6FC5C9;
     background-image: url("../img/call-me.png");
     background-position: 50% 50%;
     background-repeat: no-repeat;
