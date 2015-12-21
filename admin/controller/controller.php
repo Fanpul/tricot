@@ -2,7 +2,7 @@
 defined('KOLIBRI') or die('Access denied');
 require_once MODEL;
 session_start();
-$view = empty($_GET['view']) ? 'products' : $_GET['view'];
+$view = empty($_GET['view']) ? 'order' : $_GET['view'];
 $link = db_connect();
 
 if(isset($_POST['submit'])){
@@ -17,6 +17,8 @@ if($_GET['do'] == 'logout'){
 	logout($link);
 	redirect();
 }
+
+$cuser = getUserById($link, $_SESSION['auth']['user_id']);
 
 switch ($view) {
 	case 'categories':
@@ -102,9 +104,40 @@ switch ($view) {
 		}	
 		break;
 	case 'order':
+		$view = 'order';
+		$func = getOrderAll($link);
+		switch ($_GET['action']) {
+			case 'view':
+	  				$view = 'view-order';
+	  				$id = (int)$_GET['orderid'];
+					if ($id && isset($_POST["status-ok"])) {
+						changeStatusOk($link, $id);
+					}
+					if ($id && isset($_POST['del'])) {
+						deleteOrderById($link, $id);
+						$msg = 'Успешно удалено!';
+					}
+					$order = getOrderProductById($link, $id);
+					$orderInfo = getOrderById($link, $id);
+					$clientId = getUseridByOrderId($link, $id);
+	  			break;	
+			case 'delete':
+	  				$id = (int)$_GET['orderid'];
+					if ($id && isset($_GET['orderid'])) {
+						deleteOrderById($link, $id);
+					}
+					if ($id && isset($_POST['del'])) {
+						deleteOrderById($link, $id);
+						$msg = 'ypa!';
+					}
+					redirect();
+	  			break;	
+	  	}		
   		break;
+  	case 'user':
+  		break;	
 	default:
-		$view = 'products';
+		$view = 'order';
 		break;
 }
 require_once TEMPLATE.'index.php';

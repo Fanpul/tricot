@@ -3,6 +3,8 @@ defined('KOLIBRI') or die('Access denied');
 
 function db_connect(){
 	$link = mysqli_connect(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB) or die(mysqli_error($link));
+    mysqli_query($link, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
+    mysqli_query($link, "SET CHARACTER SET 'utf8'");
 	return $link;
 }
 $link = db_connect();
@@ -403,7 +405,8 @@ function add_order($link){
 
 function save_order($link, $customer_id){
     $cdate = date("Y-m-d");
-    $query = "INSERT INTO `order` (userid, cdate) VALUES ('$customer_id', '$cdate')";
+    $totalsum = $_SESSION['total_sum'];
+    $query = "INSERT INTO `order` (userid, cdate, totalsum) VALUES ('$customer_id', '$cdate', '$totalsum')";
     $res = mysqli_query($link, $query) or die(mysqli_error($link));
     if(mysqli_affected_rows($link) == -1){
         mysqli_query($link, "DELETE FROM user WHERE userid = '$customer_id' AND login = ''");

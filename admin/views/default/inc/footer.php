@@ -1,14 +1,14 @@
 <?php defined('KOLIBRI') or die('Access denied'); ?>
 
  <!-- Main Footer -->
-      <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-          Anything you want
-        </div>
-        <!-- Default to the left -->
-        <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
-      </footer>
+<!--       <footer class="main-footer">
+  To the right
+  <div class="pull-right hidden-xs">
+    Anything you want
+  </div>
+  Default to the left
+  <strong>Copyright &copy; 2015 <a href="#">Company</a>.</strong> All rights reserved.
+</footer> -->
 
       <!-- Control Sidebar -->
       <aside class="control-sidebar control-sidebar-dark">
@@ -101,7 +101,7 @@
 
         <script>
           $(function () {
-            $('#example2').DataTable({
+            $('table.example2').DataTable({
               "language": {
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
               },

@@ -1,3 +1,5 @@
+<?php defined('KOLIBRI') or die('Access denied');?>
+
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
@@ -16,7 +18,7 @@
   <!-- Your Page Content Here -->
 <div class="box">
     <div class="box-body">
-      <table id="example2" class="table table-bordered table-hover">
+      <table id="example2" class="table table-bordered table-hover example2">
         <thead>
           <tr>
             <th>#</th>

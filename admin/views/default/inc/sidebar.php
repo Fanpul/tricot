@@ -1,6 +1,5 @@
 <?php defined('KOLIBRI') or die('Access denied'); ?>
 
-
 <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
 
@@ -13,7 +12,7 @@
               <img src="<?=PATH?><?=TEMPLATE?>dist/img/avatar5.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-              <p>Alexander Pierce</p>
+              <p><?=makeName($cuser['name']);?></p>
               <!-- Status -->
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -45,7 +44,7 @@
             <li><a href="?view=categories"><i class="fa fa-database"></i> <span>Все категории</span></a></li>
             <li><a href="?view=order"><i class="fa fa-credit-card"></i> <span>Заказы</span></a></li>
             <li class="header">Выход</li>
-            <li><a href="<?=MAINPATH?>"><i class="fa fa-hand-o-right"></i> <span>В магазин</span></a></li>
+            <li><a href="<?=MAINPATH?>" target="_blank"><i class="fa fa-hand-o-right"></i> <span>В магазин</span></a></li>
             <li><a href="?do=logout"><i class="fa fa-sign-out"></i> <span>Выйти</span></a></li>
           </ul><!-- /.sidebar-menu -->
         </section>

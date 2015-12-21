@@ -3,6 +3,8 @@ defined('KOLIBRI') or die('Access denied');
 
 function db_connect(){
 	$link = mysqli_connect(MYSQL_SERVER, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB) or die(mysqli_error($link));
+	mysqli_query($link, "SET NAMES 'utf8' COLLATE 'utf8_general_ci'");
+	mysqli_query($link, "SET CHARACTER SET 'utf8'");
 	return $link;
 }
 
@@ -18,6 +20,12 @@ function redirect(){
 function logout($link){
 	unset($_SESSION['auth']);
 	mysqli_close($link);
+}
+
+// Очистить получаемые данные POST, GET
+function clear($link, $var) {
+	$varible = mysqli_real_escape_string($link, trim($var));
+	return $varible;
 }
 
 // Получить все продукты
@@ -133,7 +141,84 @@ function deleteProductById($link, $id){
 	return true;
 }
 
-function clear($link, $var) {
-	$varible = mysqli_real_escape_string($link, trim($var));
-	return $varible;
+// заказы
+function getOrderAll($link) {
+	$query = "SELECT * FROM `order` ORDER BY `id` DESC";
+	$res = mysqli_query($link, $query) or die(mysqli_error($link));
+	$order = array();
+	while($row = mysqli_fetch_assoc($res)){
+		$order[] = $row;
+	}
+	return $order;
+}
+
+function getOrderById($link, $id) {
+	$query = "SELECT * FROM `order` WHERE `id`='$id'";
+	$res = mysqli_query($link, $query) or die(mysqli_error($link));
+	$row = mysqli_fetch_array($res);
+	return $row;
+}
+
+function deleteOrderById($link, $id) {
+	$query = "DELETE FROM `order` WHERE `id`='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	mysqli_query($link, "DELETE FROM `orderproduct` WHERE `orderid` = '$id'");
+
+
+	return true;	
+}
+
+// user
+function getUserNameById($link, $userid) {
+	$query = "SELECT `name` FROM user WHERE id='$userid'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	$row = mysqli_fetch_array($result);
+	return $row;
+}
+
+
+function getUserById($link, $userid) {
+	$query = "SELECT * FROM user WHERE id='$userid'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	$row = mysqli_fetch_array($result);
+	return $row;
+}
+
+function getUseridByOrderId($link, $orderid) {
+	$query = "SELECT `userid` FROM `order` WHERE id='$orderid'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	$row = mysqli_fetch_array($result);
+	return $row;
+}
+
+function makeName($name) {
+	if (preg_match("/([\S]+\s[\S]+)/i", $name, $r)) {
+		$n = $r[1];
+	} else {
+		$n = $name;
+	}
+	return $n;
+}
+
+function formatDate($access_date) {
+	$date_elements  = explode("-",$access_date);
+	$format = $date_elements[2].'.'.$date_elements[1].'.'.$date_elements[0];
+	return $format;
+}
+
+// order-products
+function getOrderProductById($link, $orderid) {
+	$query = "SELECT * FROM `orderproduct` WHERE `orderid`='$orderid'";
+	$res = mysqli_query($link, $query) or die(mysqli_error($link));
+	$order = array();
+	while($row = mysqli_fetch_assoc($res)){
+		$order[] = $row;
+	}
+	return $order;	
+}
+
+function changeStatusOk($link, $id) {
+	$query = "UPDATE `order` SET `status`='1' WHERE `id`='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
 }
