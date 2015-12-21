@@ -448,7 +448,7 @@ ul.menu-cat li a:hover {
 	padding: 10px;
 	margin: 0 11px 20px;
 	display: inline-block;
-	height: 340px;
+	height: 356px;
 	float: left;
 	position: relative;
 }
@@ -486,9 +486,19 @@ ul.menu-cat li a:hover {
 	max-width: 100%;
 }
 
+.product-name-wrapper {
+	height: 59px;
+	overflow: hidden;
+}
+
 .product-name {
-	text-align: center;
-	padding: 10px;
+    overflow: hidden;
+    height: 64px;
+    text-align: center;
+    padding: 10px;
+    display: table-cell;
+    width: 230px;
+    vertical-align: middle;
 }
 
 .product-name a {

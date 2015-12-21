@@ -13,8 +13,10 @@
 			<img src="<?=PRODUCTIMG?><?=$value['img']?>" alt="<?=$value['name']?>">
 		</div>
 	</a>
-	<div class="product-name">
-		<a href="?view=product&productid=<?=$value['id']?>"><?=$value['name']?></a>
+	<div class="product-name-wrapper">
+		<div class="product-name">
+			<a href="?view=product&productid=<?=$value['id']?>"><?=$value['name']?></a>
+		</div>
 	</div>
 	<div class="product-price">
 		<div class="price"><span><?=$value['price']?>&nbsp;грн</span></div>
