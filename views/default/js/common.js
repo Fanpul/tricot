@@ -102,4 +102,11 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+
+	var menuButton = $(".list-category").find(".menu-but");
+		menuButton.hover(function(){
+			$(this).find('.sub-menu-a').addClass("active-but-menu");
+		}, function(){
+			$(this).find('.sub-menu-a').removeClass("active-but-menu");
+		});
 });
