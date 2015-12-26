@@ -49,7 +49,7 @@
 							<?php $user = getUserNameById($link, $value['userid']);?>
 							<?=$user['name']?>
 						</span>
-						<span class="date"><?=$value['cdate']?></span>
+						<span class="date"><?=formatDate($value['cdate'])?></span>
 						<div class="comment-field"><?=$value['text']?></div>
 					</div>
 				</div>

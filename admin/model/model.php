@@ -28,6 +28,13 @@ function clear($link, $var) {
 	return $varible;
 }
 
+// Перевод даты в ru формат
+function formatDate($access_date) {
+	$date_elements  = explode("-",$access_date);
+	$format = $date_elements[2].'.'.$date_elements[1].'.'.$date_elements[0];
+	return $format;
+}
+
 // Получить все продукты
 function products($link) {
 	$query = "SELECT * FROM product";
@@ -200,12 +207,6 @@ function makeName($name) {
 	return $n;
 }
 
-function formatDate($access_date) {
-	$date_elements  = explode("-",$access_date);
-	$format = $date_elements[2].'.'.$date_elements[1].'.'.$date_elements[0];
-	return $format;
-}
-
 // order-products
 function getOrderProductById($link, $orderid) {
 	$query = "SELECT * FROM `orderproduct` WHERE `orderid`='$orderid'";
@@ -221,4 +222,29 @@ function changeStatusOk($link, $id) {
 	$query = "UPDATE `order` SET `status`='1' WHERE `id`='$id'";
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
 	return true;
+}
+
+/******supplier price******/
+
+function getSupplierpriceAll($link) {
+	$query = "SELECT * FROM `supplierprice`";
+	$res = mysqli_query($link, $query) or die(mysqli_error($link));
+	$array = array();
+	while($row = mysqli_fetch_assoc($res)){
+		$array[] = $row;
+	}
+	return $array;		
+}
+
+function add_supplierprice($link, $file) {
+	$cdate = date("Y-m-d");
+	$query = "INSERT INTO `supplierprice` VALUES('', '$file', '$cdate', '1')";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
+}
+
+function deleteSupplierpriceById($link, $id) {
+	$query = "DELETE FROM `supplierprice` WHERE `id`='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;	
 }

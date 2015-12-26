@@ -134,7 +134,10 @@ switch ($view) {
 		$comment = getCommentAll($link, $productid);
 		
 	
-	break;		
+		break;
+	case 'supplierprice':
+		$func = getSupplierpriceAll($link);
+		break;			
 	default:
 		$view = 'new';
 		break;

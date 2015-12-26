@@ -43,6 +43,8 @@
             <li><a href="?view=products"><i class="fa fa-shopping-cart"></i> <span>Все продукты</span></a></li>
             <li><a href="?view=categories"><i class="fa fa-database"></i> <span>Все категории</span></a></li>
             <li><a href="?view=order"><i class="fa fa-credit-card"></i> <span>Заказы</span></a></li>
+            <li class="header">Файлы</li>
+            <li><a href="?view=supplierprice"><i class="fa fa-file-text-o"></i> <span>Прайс лист</span></a></li>
             <li class="header">Выход</li>
             <li><a href="<?=MAINPATH?>" target="_blank"><i class="fa fa-hand-o-right"></i> <span>В магазин</span></a></li>
             <li><a href="?do=logout"><i class="fa fa-sign-out"></i> <span>Выйти</span></a></li>

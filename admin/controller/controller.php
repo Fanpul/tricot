@@ -128,7 +128,7 @@ switch ($view) {
 					}
 					if ($id && isset($_POST['del'])) {
 						deleteOrderById($link, $id);
-						$msg = 'ypa!';
+						$msg = 'Успешно удалено!';
 					}
 					redirect();
 	  			break;	
@@ -136,6 +136,28 @@ switch ($view) {
   		break;
   	case 'user':
   		break;	
+  	case 'supplierprice':
+		if(isset($_POST["ok"])) {
+			$basename =  basename($_FILES['file']['name']);
+			$file = $basename;
+			$uploadfile = UPLOADDIR . $file;
+			// сохраняем на сервере
+			move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile);
+			add_supplierprice($link, $file);
+			$msg="a-success";
+		}
+
+		$func = getSupplierpriceAll($link);
+		switch ($_GET['action']) {
+			case 'delete':
+	  				$id = (int)$_GET['id'];
+					if ($id && isset($_GET['id'])) {
+						deleteSupplierpriceById($link, $id);
+					}
+					redirect();
+	  			break;	
+	  	}		
+  		break;	  		
 	default:
 		$view = 'order';
 		break;

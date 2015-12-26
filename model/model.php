@@ -25,6 +25,14 @@ function clear($link, $var){
     return $var;
 }
 
+// Перевод даты в ru формат
+function formatDate($access_date) {
+    $date_elements  = explode("-",$access_date);
+    $format = $date_elements[2].'.'.$date_elements[1].'.'.$date_elements[0];
+    return $format;
+}
+
+
 function logout() {
     unset($_SESSION['auth']);
 }
@@ -501,4 +509,16 @@ function addComment($link){
     $query = "INSERT INTO `comment` (productid, userid, cdate, text) VALUES ('$productid', '$userid', '$cdate', '$text')";
     $res = mysqli_query($link, $query) or die(mysqli_error($link));
     return true;
+}
+
+/******supplier price******/
+
+function getSupplierpriceAll($link) {
+    $query = "SELECT * FROM `supplierprice` WHERE `visible`='1'";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    $array = array();
+    while($row = mysqli_fetch_assoc($res)){
+        $array[] = $row;
+    }
+    return $array;      
 }

@@ -48,12 +48,9 @@
 
                 // Triggering bPopup when click event is fired
                 var callme = $('#js-callme-modal').bPopup({
-                    //closeClass: 'b-close',
                     modalClose: false,
                     easing: 'easeInOutCubic', //uses jQuery easing plugin
                     speed: 600,
-                    //transition: 'slideDown',
-                    //transitionClose: 'slideDown',
                     escClose: true
                 });
         });
@@ -63,7 +60,7 @@
         $("#js-call-me-submit").submit(function() {
             $.ajax({
                 type: "POST",
-                url: "mail.php",
+                url: "http://kolibri.cn.ua/mail.php",
                 data: $(this).serialize()
             }).done(function() {
             

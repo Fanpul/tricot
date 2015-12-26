@@ -149,7 +149,7 @@
 				<li><a href="<?=PATH?>">Главная</a></li>
 				<li><a href="?view=cart">Корзина</a></li>
 				<li><a href="#">О нас</a></li>
-				<li><a href="#">Прайс лист</a></li>
+				<li><a href="?view=supplierprice">Прайс лист</a></li>
 			</ul>
 		</div>	
 		<div class="row">
