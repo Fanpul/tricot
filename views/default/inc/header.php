@@ -47,7 +47,7 @@
 						<li><a href="?do=logout">Выход</a></li>
 					<?php else:?>
 						<!-- Button that triggers the popup -->
-						<li><a id="js-open-auth" href="#">Вход</a></li>
+						<li><a class="js-open-auth" href="#">Вход</a></li>
 						<li><a href="#" class="js-open-reg">Регистрация</a></li>
 					<?php endif;?>
 				</ul>	

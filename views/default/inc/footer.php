@@ -6,8 +6,46 @@
 <footer class="site-footer">
 
 
-	<div class="footer-info"><div class="container"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis magnam deserunt doloremque consectetur beatae ad, totam similique repellendus maxime cum! Ex vero, accusantium fuga nostrum quas, maiores enim quibusdam qui. Voluptatibus, assumenda doloremque nesciunt nulla sint, suscipit autem illo harum, maiores nemo dolorem enim ipsam voluptates qui architecto iste neque.</p></div></div>
-	<div class="footer-copy"><div class="container"><p>Интернет-магазин "Колибри" &copy; 2015-2016 г.</p></div></div>
+	<div class="footer-info">
+		<div class="container">
+			<div class="footer-block footer-block-first pull-left">
+				<h2>Контакты</h2>
+				<ul>
+					<li>время работы: Пн-Сб: 10.00-18.00</li>
+					<li><i class="fa fa-envelope-o"></i> shop@kolibri.cn.ua</li>
+					<li><i class="fa fa-map-marker faa"></i> Чернигов, пр. Победы, 100</li>
+				</ul>
+				<span><i class="fa fa-mobile faa"></i> +3 (068) 59 59 335</span>
+				<span><i class="fa fa-mobile faa"></i> +3 (068) 59 59 335</span>
+				<span><i class="fa fa-mobile faa"></i> +3 (068) 59 59 335</span>
+			</div>
+			<div class="footer-block footer-block-last pull-right">
+				<h2>Кабинет клиента</h2>
+				<ul>
+					<?php if($_SESSION['auth']['level'] >= 2):?>
+						<li><a href="<?=PATH?>admin">Админ панель</a></li>
+					<?php endif;?>
+					<?php if($_SESSION['auth']['user']):?>
+						<li><a href="?do=logout">Выход</a></li>
+					<?php else:?>
+						<!-- Button that triggers the popup -->
+						<li><a class="js-open-auth" href="#">Вход</a></li>
+						<li><a href="#" class="js-open-reg">Регистрация</a></li>
+					<?php endif;?>
+				</ul>
+			</div>
+			<div class="footer-block pull-right">
+				<h2>Карта сайта</h2>
+				<ul>
+					<li><a href="/">Главная</a></li>
+					<li><a href="?view=cart">Корзина</a></li>
+					<li><a href="?view=supplierprice">Прайс лист</a></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="footer-copy"><div class="container"><p>Интернет-магазин "Колибри" &copy; 2015-<?=date('Y')?> г.</p></div></div>
 </footer>
 
 <div class="call-me js-open-call-me" ></div>	

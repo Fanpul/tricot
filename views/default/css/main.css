@@ -132,7 +132,7 @@ body{
 
 .wrapper-mainer {
 	min-height: 100%;
-	margin-bottom: -200px;
+	margin-bottom: -230px;
 }
 
 .wrapper-mainer:after {
@@ -141,7 +141,7 @@ body{
 }
 
 .site-footer, .wrapper-mainer:after {
-  height: 200px; 
+  height: 230px; 
 }
 
 
@@ -667,7 +667,7 @@ ul.menu-cat li a:hover {
 
 .footer-info {
 	background: #FCA4DE;
-	height: 150px;	
+	height: 180px;	
 }
 
 .footer-info p {
@@ -678,6 +678,64 @@ ul.menu-cat li a:hover {
 	text-shadow: 1px 1px 1px #AF6195;
 }
 
+.footer-block {
+	width: 232px;
+	padding: 15px;
+}
+
+.footer-block span {
+	margin: 0 10px 0 0;
+}
+
+.footer-block ul li,
+.footer-block {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 1px 1px 1px #AF6195;
+}
+
+.footer-block h2 {
+	font-size: 18px;
+}
+
+.footer-block-first {
+	line-height: 24px;
+	width: 500px;
+}
+
+.footer-block-last {
+	width: 175px;
+}
+
+
+.footer-block h2 {
+	color: #fff;
+	text-shadow: 1px 1px 1px #AF6195;
+}
+
+.footer-block ul{
+	list-style: none;
+}
+
+.footer-block ul li a{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	text-shadow: 1px 1px 1px #AF6195;	
+	border-bottom: 1px dashed #fff;
+}
+
+.footer-block ul li a:hover {
+	border-bottom: none;
+}
+
+.faa {
+	font-size: 24px;
+	position: relative;
+	top: 3px;
+}
 /*modal*/
 .modal-window { 
 	width: 400px;
