@@ -135,6 +135,16 @@ switch ($view) {
 	  	}		
   		break;
   	case 'user':
+  		$func = getUsersAll($link);
+  		switch ($_GET['action']) {
+			case 'delete':
+  				$id = (int)$_GET['id'];
+				if ($id && isset($_GET['id'])) {
+					deleteUserById($link, $id);
+				}
+				redirect();
+  			break;	
+	  	}	
   		break;	
   	case 'supplierprice':
 		if(isset($_POST["ok"])) {

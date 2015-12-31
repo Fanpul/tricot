@@ -15,9 +15,9 @@
 					<li><i class="fa fa-envelope-o"></i> shop@kolibri.cn.ua</li>
 					<li><i class="fa fa-map-marker faa"></i> Чернигов, пр. Победы, 100</li>
 				</ul>
-				<span><i class="fa fa-mobile faa"></i> +3 (068) 59 59 335</span>
-				<span><i class="fa fa-mobile faa"></i> +3 (068) 59 59 335</span>
-				<span><i class="fa fa-mobile faa"></i> +3 (068) 59 59 335</span>
+				<span><i class="fa fa-mobile faa"></i> +3 (050) 59 59 335</span>
+				<span><i class="fa fa-mobile faa"></i> +3 (096) 07 03 230</span>
+				<span><i class="fa fa-mobile faa"></i> +3 (063) 85 75 842</span>
 			</div>
 			<div class="footer-block footer-block-last pull-right">
 				<h2>Кабинет клиента</h2>

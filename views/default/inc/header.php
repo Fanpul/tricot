@@ -32,9 +32,9 @@
 	<div class="top-line">
 		<div class="container">
 			<div class="phone-box">
-				<span>+3 (068) 59 59 335</span>
 				<span>+3 (050) 59 59 335</span>
-				<span>+3 (093) 59 59 335</span>
+				<span>+3 (096) 07 03 230</span>
+				<span>+3 (063) 85 75 842</span>
 				<div class="clear"></div>
 			</div>
 			<div class="client-panel">

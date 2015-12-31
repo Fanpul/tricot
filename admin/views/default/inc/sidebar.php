@@ -31,6 +31,7 @@
 
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
+            <li><a href="?view=user"><i class="fa fa-users"></i> <span>Контакты</span></a></li>
             <li class="header">Товары</li>
             <!-- Optionally, you can add icons to the links -->
             <li class="treeview">

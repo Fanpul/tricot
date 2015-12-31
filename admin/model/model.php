@@ -183,6 +183,15 @@ function getUserNameById($link, $userid) {
 	return $row;
 }
 
+function getUsersAll($link) {
+	$query = "SELECT * FROM `user`";
+	$res = mysqli_query($link, $query) or die(mysqli_error($link));
+	$array = array();
+	while($row = mysqli_fetch_assoc($res)){
+		$array[] = $row;
+	}
+	return $array;	
+}
 
 function getUserById($link, $userid) {
 	$query = "SELECT * FROM user WHERE id='$userid'";
@@ -196,6 +205,12 @@ function getUseridByOrderId($link, $orderid) {
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
 	$row = mysqli_fetch_array($result);
 	return $row;
+}
+
+function deleteUserById($link, $id) {
+	$query = "DELETE FROM `user` WHERE `id`='$id' AND `level`<'3'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;	
 }
 
 function makeName($name) {
