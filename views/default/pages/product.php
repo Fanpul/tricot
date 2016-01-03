@@ -23,7 +23,7 @@
 			</div>
 			<div class="payment">
 				<!-- <label for="count-item">Количество</label><input type="text" value="1" id="count-item"> -->
-				<a class="buy-item-but" href="?view=addtocart&amp;productid=<?=$product['id']?>">В корзину</a>
+				<a class="buy-item-but" href="<?=PATH?>?view=addtocart&amp;id=<?=$product['id']?>">В корзину</a>
 			</div>
 		</div>
 	</div>
@@ -43,7 +43,7 @@
 		<?php foreach ($comment as $value):?>
 			<div class="rewiew-user-box col-md-12">
 				<div class="comment-user row">
-					<img src="<?=TEMPLATE?>img/comment.png" alt="" class="avatar col-md-2">
+					<img src="<?=PATH?><?=TEMPLATE?>img/comment.png" alt="" class="avatar col-md-2">
 					<div class="info-and-comment col-md-8 col-md-offset-1">
 						<span class="name">
 							<?php $user = getUserNameById($link, $value['userid']);?>
@@ -59,7 +59,7 @@
 	</div>
 </div>
 
-	<script src="<?=TEMPLATE?>js/jquery.elevateZoom-3.0.8.min.js"></script>
+	<script src="<?=PATH?><?=TEMPLATE?>js/jquery.elevateZoom-3.0.8.min.js"></script>
 	<script>
 		$('#img-zoom').elevateZoom({
 			tint:true,

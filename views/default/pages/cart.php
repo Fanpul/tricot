@@ -22,10 +22,10 @@
 						<td class="img"><a href="?view=product&amp;productid=<?=$key?>">
 							<img src="<?=PRODUCTIMG?><?=$item['img']?>" alt="<?=$item['name']?>" height="70"></a>
 						</td>
-						<td class="model"><a href="?view=product&amp;productid=<?=$key?>"><?=$item['name']?></a></td>
+						<td class="model"><a href="/product/<?=$key?>/"><?=$item['name']?></a></td>
 						<td class="quantity">
 							<input class="js-qty" id="id<?=$key?>" type="number" value="<?=$item['qty']?>" >
-							<a href="?view=cart&delete=<?=$key?>"><img src="<?=TEMPLATE?>img/gnome-fs-trash-full.png" alt="удалить"></a>
+							<a href="<?=PATH?>?view=cart&delete=<?=$key?>"><img src="<?=PATH?><?=TEMPLATE?>img/gnome-fs-trash-full.png" alt="удалить"></a>
 						</td>
 						<td class="price-item">
 							<span><?=$item['price']?></span> грн.</td>
@@ -52,7 +52,7 @@
 				</div>
 				<div class="box-cont col-sm-12">
 					<i class="fa fa-phone fa-3x"></i>
-					<input class="cont-phone" type="phone" placeholder="Телефон" name="phone" required>
+					<input id="js-order-phone" class="cont-phone" type="text" placeholder="Телефон" name="phone" required>
 				</div>
 				<div class="box-cont col-sm-12">
 					<i class="fa fa-envelope-o fa-3x"></i>
@@ -87,3 +87,26 @@
 		<?php endif;?>
 <?php endif;?>	
 </div>
+
+<script>
+		// Пересчет кол-ва товаров в корзине
+	$('.js-qty').each(function(){
+	var qty_start = $(this).val();
+
+		$(this).change(function(){
+			var qty = $(this).val();
+			var id = $(this).attr('id');
+			id = id.substr(2);
+			if(!parseInt(qty)){
+				qty = qty_start;
+			}
+			window.location = '<?=PATH?>?view=cart&qty=' + qty + '&id=' + id;
+		});
+	});
+
+	$('.js-qty').keypress(function(e){
+		if(e.which == 13){
+			return false;
+		}
+	});
+</script>

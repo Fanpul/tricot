@@ -82,7 +82,7 @@ $(document).ready(function() {
 		return false;
 	});*/
 
-	// Пересчет кол-ва товаров в корзине
+/*	// Пересчет кол-ва товаров в корзине
 	$('.js-qty').each(function(){
 	var qty_start = $(this).val();
 
@@ -93,7 +93,7 @@ $(document).ready(function() {
 			if(!parseInt(qty)){
 				qty = qty_start;
 			}
-			window.location = '?view=cart&qty=' + qty + '&id=' + id;
+			window.location = 'http://tri.loc/?view=cart&qty=' + qty + '&id=' + id;
 		});
 	});
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 		if(e.which == 13){
 			return false;
 		}
-	});
+	});*/
 
 	var menuButton = $(".list-category").find(".menu-but");
 		menuButton.hover(function(){

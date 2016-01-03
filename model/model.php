@@ -108,7 +108,7 @@ function products($link, $category, $start_pos, $perpage){
 }
 
 function getProductByID($link, $id){
-    $query = "SELECT * FROM product WHERE id='$id' AND visible='1'";
+    $query = "SELECT * FROM `product` WHERE `id`='$id' AND `visible`='1'";
     $res = mysqli_query($link, $query) or die(mysqli_error($link));
     $product = mysqli_fetch_assoc($res);
     return $product;
@@ -138,9 +138,9 @@ function eyestopper($link, $start_pos, $perpage){
 	return $prod;
 }
 
-function current_cat($link, $category){
+function current_cat($link, $id){
 	$query = "SELECT name FROM category 
-		WHERE id='$category'";
+		WHERE id='$id'";
 	$res = mysqli_query($link, $query) or die(mysqli_error($link));
 	$cur_cat = array();
 	$cur_cat = mysqli_fetch_assoc($res);
@@ -149,12 +149,21 @@ function current_cat($link, $category){
 }
 
 function count_rows($link, $category){
-	$query = "SELECT id FROM product 
-		WHERE categoryid='$category' AND visible='1'";
+	$query = "SELECT `id` FROM `product` 
+		WHERE `categoryid`='$category' AND visible='1'";
 	$res = mysqli_query($link, $query) or die(mysqli_error($link));
 	$count_rows = mysqli_num_rows($res);
 	$_SESSION['nun'][$category] = $count_rows;
 	return $count_rows;
+}
+
+function count_rows_cat($link, $parentcategoryid){
+    $query = "SELECT `id` FROM `product` 
+        WHERE `parentcategoryid`='$parentcategoryid' AND visible='1'";
+    $res = mysqli_query($link, $query) or die(mysqli_error($link));
+    $count_rows = mysqli_num_rows($res);
+    $_SESSION['nunp'][$category] = $count_rows;
+    return $count_rows;
 }
 
 function count_rows_new($link){
@@ -166,7 +175,7 @@ function count_rows_new($link){
 	return $count_rows;
 }
 
-function pagination($page, $pages_count){
+/*function pagination($page, $pages_count){
     //echo "Страница: {$page}; Общее кол-во страниц: {$pages_count}<br/><br/>";
     if($_SERVER['QUERY_STRING']){
         foreach ($_GET as $key => $value) {
@@ -216,6 +225,61 @@ function pagination($page, $pages_count){
     }
     if($page < ($pages_count-3)){
         $dotright = "<li class='next'><a href='?{$uri}page=".($page+3)."'>...</a></li>";
+    }
+    echo "<ul id='pagination-flickr'>".$back.$startpage.$dotleft.$page2left.$page1left."<li class='active'>".$page."</li>".$page1right.$page2right.$dotright.$endpage.$forward."</ul>";
+}*/
+
+function pagination($page, $pages_count){
+    //echo "Страница: {$page}; Общее кол-во страниц: {$pages_count}<br/><br/>";
+    if($_SERVER['QUERY_STRING']){
+        foreach ($_GET as $key => $value) {
+            //if($key != 'page') $uri .= "{$key}={$value}&amp;";
+            if($key != 'page') $uri .= "/$value";
+        }
+    }
+    $back = ''; //назад
+    $forward = ''; // вперед
+    $startpage = '';
+    $endpage = '';
+    $page2left = '';
+    $page1left = '';
+    $page2right = '';
+    $page1right = '';
+    if($page > 1){
+        $back = "<li class='previous'><a href='{$uri}/p-".($page-1)."'>&laquo; Назад</a></li>";
+    }
+    else{
+        $back = "<li class='previous-off'>&laquo; Назад</li>";        
+    }
+    if($page < $pages_count){
+        $forward = "<li class='next'><a href='{$uri}/p-".($page+1)."'>Вперед &raquo;</a></li>";
+    }
+    else{
+        $forward = "<li class='next-off'>Вперед &raquo;</li>"; 
+    }
+    if($page - 1 > 0){
+        $page1left = "<li><a href='{$uri}/p-".($page-1)."'>".($page-1)."</a></li>";
+    }
+    if($page + 1 <= $pages_count){
+        $page1right = "<li><a href='{$uri}/p-".($page+1)."'>".($page+1)."</a></li>";
+    }
+    if($page - 2 > 0){
+        $page2left = "<li><a href='{$uri}/p-".($page-2)."'>".($page-2)."</a></li>";
+    }
+    if($page + 2 <= $pages_count){
+        $page2right = "<li><a href='{$uri}/p-".($page+2)."'>".($page+2)."</a></li>";
+    }
+    if($page > 3){
+        $startpage = "<li><a href='{$uri}/p-1'>1</a></li>";
+    }
+    if($page < ($pages_count-2)){
+        $endpage = "<li><a href='{$uri}/p-{$pages_count}'>$pages_count</a></li>";
+    }
+    if($page > 4){
+        $dotleft = "<li class='next'><a href='{$uri}/p-".($page-3)."'>...</a></li>";
+    }
+    if($page < ($pages_count-3)){
+        $dotright = "<li class='next'><a href='{$uri}/p-".($page+3)."'>...</a></li>";
     }
     echo "<ul id='pagination-flickr'>".$back.$startpage.$dotleft.$page2left.$page1left."<li class='active'>".$page."</li>".$page1right.$page2right.$dotright.$endpage.$forward."</ul>";
 }
@@ -501,7 +565,7 @@ function getCommentAll($link, $productid){
 }
 
 function addComment($link){
-    $productid = abs((int)$_GET['productid']);
+    $productid = abs((int)$_GET['id']);
     $userid = $_SESSION['auth']['user_id'];
     $cdate = date("Y-m-d");
     $text = clear($link, $_POST['reviews']);

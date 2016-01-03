@@ -119,7 +119,7 @@
 </div>
 <?php if($msg):?>
     <script>
-        setTimeout( 'location="<?=PATH?>?view=order";', 0 );
+        setTimeout( 'location="<?=PATH?>?view=order"', 0 );
     </script>
 <?php endif;?>
 

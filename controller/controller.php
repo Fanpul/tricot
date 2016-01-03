@@ -29,7 +29,8 @@ switch ($view) {
 	case 'new':
 		$perpage = 6;
 		if(isset($_GET['page'])){
-			$page = (int)$_GET['page'];
+			$p = $_GET['page'];
+			$page = (int)preg_replace('/\D/i', '', $p);
 			if($page < 1){
 				$page = 1;
 			}
@@ -46,11 +47,12 @@ switch ($view) {
 		$eyestopper = eyestopper($link, $start_pos, $perpage);
 		break;
 	case 'cat':
-		$category = abs((int)$_GET['category']);//getProductSubcategoryAll
+		$category = abs((int)$_GET['id']);
 		$current_cat = current_cat($link, $category);
 		$perpage = 6;
 		if(isset($_GET['page'])){
-			$page = (int)$_GET['page'];
+			$p = $_GET['page'];
+			$page = (int)preg_replace('/\D/i', '', $p);
 			if($page < 1){
 				$page = 1;
 			}
@@ -58,7 +60,7 @@ switch ($view) {
 		else{
 			$page = 1;
 		}
-		$count_rows = count_rows($link, $category);
+		$count_rows = count_rows_cat($link, $category);
 		$pages_count = ceil($count_rows / $perpage);
 		if(!$pages_count) $pages_count = 1;
 		if($page > $pages_count) $page = $pages_count;
@@ -67,11 +69,12 @@ switch ($view) {
 		$products = products($link, $category, $start_pos, $perpage);
 		break;	
 	case 'subcat':
-		$category = abs((int)$_GET['category']);
+		$category = abs((int)$_GET['id']);
 		$current_cat = current_cat($link, $category);
 		$perpage = 6;
 		if(isset($_GET['page'])){
-			$page = (int)$_GET['page'];
+			$p = $_GET['page'];
+			$page = (int)preg_replace('/\D/i', '', $p);
 			if($page < 1){
 				$page = 1;
 			}
@@ -88,7 +91,7 @@ switch ($view) {
 		$products = getProductSubcategoryAll($link, $category, $start_pos, $perpage);
 		break;	
 	case 'addtocart':
-		$productid = abs((int)$_GET['productid']);
+		$productid = abs((int)$_GET['id']);
 		addtocart($productid);
 		//$_SESSION['total_quantity'] = total_items($_SESSION['cart']);
 		$_SESSION['total_sum'] = total_sum($link, $_SESSION['cart']);
@@ -117,12 +120,11 @@ switch ($view) {
 		}
 		if(isset($_POST['buy'])){
 			add_order($link);
-			//redirect();
 			$info = "Мы с вами свяжемся!";
 		}
 		break;	
 	case 'product':
-		$productid = abs((int)$_GET['productid']);
+		$productid = abs((int)$_GET['id']);
 		if (!$productid) {
 			redirect();
 		}

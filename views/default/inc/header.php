@@ -15,16 +15,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="favicon.png" />
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>libs/bootstrap/bootstrap-grid-3.3.1.min.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>libs/font-awesome-4.2.0/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>libs/fancybox/jquery.fancybox.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>libs/owl-carousel/owl.carousel.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>libs/countdown/jquery.countdown.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>css/fonts.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>css/main.css" />
-	<link rel="stylesheet" href="<?=TEMPLATE?>css/media.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>libs/bootstrap/bootstrap-grid-3.3.1.min.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>libs/font-awesome-4.2.0/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>libs/fancybox/jquery.fancybox.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>libs/owl-carousel/owl.carousel.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>libs/countdown/jquery.countdown.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>css/fonts.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>css/main.css" />
+	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>css/media.css" />
 
-	<script src="<?=TEMPLATE?>libs/jquery/jquery-1.11.1.min.js"></script>
+	<script src="<?=PATH?><?=TEMPLATE?>libs/jquery/jquery-1.11.1.min.js"></script>
 </head>
 <body>
 <div class="wrapper-mainer">
@@ -32,8 +32,8 @@
 	<div class="top-line">
 		<div class="container">
 			<div class="phone-box">
-				<span>+3 (050) 59 59 335</span>
 				<span>+3 (096) 07 03 230</span>
+				<span>+3 (050) 59 59 335</span>
 				<span>+3 (063) 85 75 842</span>
 				<div class="clear"></div>
 			</div>
@@ -44,7 +44,7 @@
 						<li><a href="<?=PATH?>admin">Админ панель</a></li>
 					<?php endif;?>
 					<?php if($_SESSION['auth']['user']):?>
-						<li><a href="?do=logout">Выход</a></li>
+						<li><a href="<?=PATH?>?do=logout">Выход</a></li>
 					<?php else:?>
 						<!-- Button that triggers the popup -->
 						<li><a class="js-open-auth" href="#">Вход</a></li>
@@ -118,7 +118,7 @@
 	<div class="container content-wrapper">
 		<header class="row">
 			<a href="<?=PATH?>" class="col-md-2 logo">
-				<img src="<?=TEMPLATE?>img/Kolibri-logo.png" height="105" alt="колибри">
+				<img src="<?=PATH?><?=TEMPLATE?>img/Kolibri-logo.png" height="105" alt="колибри">
 			</a>
 			<div class="functional col-md-offset-2 col-xs-8 ">
 				<form action="" class="col-md-4 col-md-offset-3 search-form">
@@ -128,7 +128,7 @@
 					<input type="submit" class="go-search" name="" value="">
 				</form>
 				<div class="basket-wrap col-md-5">
-					<a href="?view=cart">
+					<a href="/cart/">
 						<b>Корзина:</b>
 						<span class="info-but"></span>
 						<span class="cart-sum">
@@ -147,14 +147,14 @@
 		<div class="row">
 			<ul class="menu-cat">
 				<li><a href="<?=PATH?>">Главная</a></li>
-				<li><a href="?view=cart">Корзина</a></li>
-				<li><a href="#">О нас</a></li>
-				<li><a href="?view=supplierprice">Прайс лист</a></li>
+				<li><a href="/cart/">Корзина</a></li>
+				<li><a href="/about-us/">О нас</a></li>
+				<li><a href="/supplierprice/">Прайс лист</a></li>
 			</ul>
 		</div>	
 		<div class="row">
 			<div class="caroosel">
-				<img src="<?=TEMPLATE?>img/2015-04-08_134549.jpg" width="1110" alt="">
+				<img src="<?=PATH?><?=TEMPLATE?>img/2015-04-08_134549.jpg" width="1110" alt="">
 			</div>
 		</div>	
 <div class="row">

@@ -8,21 +8,21 @@
 	<?php if ($value['new']):?>
 		<div class="eyestop"></div>
 	<?php endif;?>
-	<a href="?view=product&amp;productid=<?=$value['id']?>">
+	<a href="/product/<?=$value['id']?>/">
 		<div class="product-pic">
 			<img src="<?=PRODUCTIMG?><?=$value['img']?>" alt="<?=$value['name']?>">
 		</div>
 	</a>
 	<div class="product-name-wrapper">
 		<div class="product-name">
-			<a href="?view=product&productid=<?=$value['id']?>"><?=$value['name']?></a>
+			<a href="/product/<?=$value['id']?>/"><?=$value['name']?></a>
 		</div>
 	</div>
 
 	<div class="product-price">
 		<div class="price"><span><?=$value['price']?>&nbsp;грн</span></div>
 		<div class="tocart">
-			<a class="tocart-btn" href="?view=addtocart&productid=<?=$value['id']?>">В корзину</a>
+			<a class="tocart-btn" href="<?=PATH?>?view=addtocart&id=<?=$value['id']?>">В корзину</a>
 		</div>
 	</div>
 	<div class="clear"></div>
