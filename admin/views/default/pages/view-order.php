@@ -100,7 +100,7 @@
 </section><!-- /.content -->
 
 <div class="fixed-buttons-wrapper">
-    <div class="fixed-buttons" <?php if($status) echo 'style= "width: 120px;"'?> >
+    <div class="fixed-buttons">
         <?php if (!$status):?>
             <div class="button-wrapper">
                 <form method="post">

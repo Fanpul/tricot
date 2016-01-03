@@ -69,9 +69,8 @@ p.total {
 }
 
 .fixed-buttons {
-	margin: 10px auto;
-	width: 245px;
-	//line-height: 50px;
+    text-align: center;
+    margin: 10px auto;
 }
 
 .button-wrapper {
