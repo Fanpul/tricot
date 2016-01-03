@@ -38,8 +38,8 @@
 				<h2>Карта сайта</h2>
 				<ul>
 					<li><a href="/">Главная</a></li>
-					<li><a href="?view=cart">Корзина</a></li>
-					<li><a href="?view=supplierprice">Прайс лист</a></li>
+					<li><a href="/cart/">Корзина</a></li>
+					<li><a href="/supplierprice/">Прайс лист</a></li>
 				</ul>
 			</div>
 			<div class="clear"></div>

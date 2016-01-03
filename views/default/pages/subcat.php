@@ -21,7 +21,7 @@
 	<div class="product-price">
 		<div class="price"><span><?=$value['price']?>&nbsp;грн</span></div>
 		<div class="tocart">
-			<a class="tocart-btn" href="?view=addtocart&id=<?=$value['id']?>">В корзину</a>
+			<a class="tocart-btn" href="<?=PATH?>?view=addtocart&id=<?=$value['id']?>">В корзину</a>
 		</div>
 	</div>
 	<div class="clear"></div>
