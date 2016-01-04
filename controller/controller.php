@@ -139,7 +139,11 @@ switch ($view) {
 		break;
 	case 'supplierprice':
 		$func = getSupplierpriceAll($link);
-		break;			
+		break;		
+	case 'about':
+		//$view = 'about-us';
+	    // code
+		break;		
 	default:
 		$view = 'new';
 		break;

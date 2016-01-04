@@ -26,7 +26,7 @@
 						<li><a href="<?=PATH?>admin">Админ панель</a></li>
 					<?php endif;?>
 					<?php if($_SESSION['auth']['user']):?>
-						<li><a href="?do=logout">Выход</a></li>
+						<li><a href="<?=PATH?>?do=logout">Выход</a></li>
 					<?php else:?>
 						<!-- Button that triggers the popup -->
 						<li><a class="js-open-auth" href="#">Вход</a></li>

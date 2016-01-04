@@ -148,7 +148,7 @@
 			<ul class="menu-cat">
 				<li><a href="<?=PATH?>">Главная</a></li>
 				<li><a href="/cart/">Корзина</a></li>
-				<li><a href="/about-us/">О нас</a></li>
+				<li><a href="/about/">О нас</a></li>
 				<li><a href="/supplierprice/">Прайс лист</a></li>
 			</ul>
 		</div>	

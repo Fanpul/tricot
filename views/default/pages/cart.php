@@ -19,7 +19,7 @@
 					foreach ($_SESSION['cart'] as $key => $item):
 				?>
 					<tr>
-						<td class="img"><a href="?view=product&amp;productid=<?=$key?>">
+						<td class="img"><a href="/product/<?=$key?>/">
 							<img src="<?=PRODUCTIMG?><?=$item['img']?>" alt="<?=$item['name']?>" height="70"></a>
 						</td>
 						<td class="model"><a href="/product/<?=$key?>/"><?=$item['name']?></a></td>

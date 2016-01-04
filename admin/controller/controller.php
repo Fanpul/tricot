@@ -35,6 +35,17 @@ switch ($view) {
 					redirect();
 				}
 				break;
+			case 'delete':
+  				$id = (int)$_GET['id'];
+				if ($id && isset($_GET['id'])) {
+					deleteCategoryById($link, $id);
+				}
+/*					if ($id && isset($_POST['del'])) {
+					deleteOrderById($link, $id);
+					$msg = 'Успешно удалено!';
+				}*/
+				redirect();
+  			break;	
 		}
 		break;
 	case 'products':

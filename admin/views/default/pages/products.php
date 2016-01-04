@@ -78,8 +78,8 @@
 								<h4 class="modal-title text-center">"<?=$value['name']?>"</h4>
 								<form action="" method="post" class="text-center">
 									<input type="hidden" name="productid" value="<?=$value['id']?>">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Отмена <i class="fa fa-reply"></i></button>
-			    					<button type="submit" class="btn btn-danger" name="delete">Удалить <i class="fa fa-times"></i></button> 
+									<button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
+			    					<button type="submit" class="btn btn-danger" name="delete">Удалить</button> 
 								</form>
 								
 		    				</div>

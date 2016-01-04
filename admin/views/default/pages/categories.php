@@ -26,6 +26,10 @@
 									<?=$value['name']?>
 								</a>
 							</h4>
+							<div class="pull-right">
+								<a href="?view=categories&amp;action=delete&amp;id=<?=$value['id']?>" onclick="return confirm('Вы подтверждаете удаление?');"><i class="fa fa-trash faa"></i></a>
+							</div>
+							<div class="clear"></div>
 						</div>
 						<div id="collapse<?=$value['id']?>" class="panel-collapse collapse">
 							<div class="box-body">
@@ -51,7 +55,7 @@
 												?>
 							        		</th>
 							        		<th><a href="?view=categories&amp;action=edit&amp;id=<?=$value['id']?>"><?=$value['name']?></a></th>
-							        		<th><a href="?view=categories&amp;action=delete&amp;id=<?=$value['id']?>">х</a></th>
+							        		<th><a href="?view=categories&amp;action=delete&amp;id=<?=$value['id']?>" onclick="return confirm('Вы подтверждаете удаление?');"><i class="fa fa-trash faa"></i></a></th>
 							        	</tr>
 									<?php endforeach;?>
 						            </tbody>

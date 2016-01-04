@@ -56,7 +56,7 @@
                 </div>                 
               </div><!-- /.box-body -->
               <div class="box-footer">
-                <button type="submit" name="cancel" class="btn btn-default">Отмена</button>
+                <a class="btn btn-default" href="?view=categories">Отмена</a>
                 <button type="submit" name="ok" class="btn btn-primary pull-right">Создать</button>
               </div><!-- /.box-footer -->
             </form>

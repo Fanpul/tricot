@@ -97,6 +97,13 @@ function add_category($link) {
 	return true;
 }
 
+function deleteCategoryById($link, $id) {
+	$query = "DELETE FROM `category` WHERE `id`='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	mysqli_query($link, "DELETE FROM `category` WHERE `parentid` = '$id'");
+	return true;		
+}
+
 // создать продукт
 function add_product($link, $file = false) {
 	$name = clear($link, $_POST['name']);
@@ -133,6 +140,7 @@ function saveEditProduct($link, $id, $file = false) {
 	$new = $_POST['new'];
 	$visible = $_POST['visible'];
 	$pic = $file;
+	$f="";
 	if ($pic) {
 		$f = "img='$pic', ";
 	}
