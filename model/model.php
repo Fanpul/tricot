@@ -85,7 +85,7 @@ if ($auther->authenticate()) {
 /*********************/
 
 function category($link, $parentid = 0){
-	$query = "SELECT * FROM category WHERE parentid='$parentid'";
+	$query = "SELECT * FROM `category` WHERE `parentid`='$parentid' AND `visible`='1'";
 	$res = mysqli_query($link, $query) or die(mysqli_error($link));
 	$cat = array();
 	while($row = mysqli_fetch_assoc($res)){

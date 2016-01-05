@@ -53,7 +53,7 @@
                                     <form method="post">
                                         <input type="hidden" name="categoryid" value="<?=$value['id']?>">
                                         <div style="display: inline-block;">
-                                        	<input type="checkbox" name="visible" class="checkbox" id="check" value="1" <?php if($visible) echo "checked"?>/>
+                                        	<input type="checkbox" name="visible" class="ch-checkbox" id="check" value="1" <?php if($visible) echo "checked"?>/>
 											<label class="toggle-checkbox" for="check"></label>
                                        	</div>
                                         
@@ -113,7 +113,7 @@
                                                     <form method="post">
                                                         <input type="hidden" name="categoryid" value="<?=$value['id']?>">
                                                         <div style="display: inline-block;">
-                                                        	<input type="checkbox" name="visible" class="checkbox" id="check" value="1" <?php if($visible) echo "checked"?>/>
+                                                        	<input type="checkbox" name="visible" class="ch-checkbox" id="check" value="1" <?php if($visible) echo "checked"?>/>
 															<label class="toggle-checkbox" for="check"></label>
                                                        	</div>
                                                         

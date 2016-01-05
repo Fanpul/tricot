@@ -185,7 +185,7 @@ label.toggle-checkbox {
 }
 /* Cначала обозначаем стили для IE8 и более старых версий
 т.е. здесь мы немного облагораживаем стандартный чекбокс. */
-.checkbox {
+.ch-checkbox {
   width: 50px;
   z-index: 99;
   vertical-align: top;
@@ -194,7 +194,7 @@ label.toggle-checkbox {
 }
 /* Это для всех браузеров, кроме совсем старых, которые не поддерживают
 селекторы с плюсом. Показываем, что label кликабелен. */
-.checkbox + label {
+.ch-checkbox + label {
   cursor: pointer;
 }
 
@@ -203,16 +203,16 @@ label.toggle-checkbox {
 в них все нижеследующие стили не сработают. */
 
 /* Прячем оригинальный чекбокс. */
-.checkbox:not(checked) {
+.ch-checkbox:not(checked) {
   position: absolute;
   opacity: 0;
 }
-.checkbox:not(checked) + label {
+.ch-checkbox:not(checked) + label {
   position: relative; /* будем позиционировать псевдочекбокс относительно label */
   padding: 0 0 0 60px; /* оставляем слева от label место под псевдочекбокс */
 }
 /* Оформление первой части чекбокса в выключенном состоянии (фон). */
-.checkbox:not(checked) + label:before {
+.ch-checkbox:not(checked) + label:before {
   content: '';
   position: absolute;
   top: -4px;
@@ -224,7 +224,7 @@ label.toggle-checkbox {
   box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
 }
 /* Оформление второй части чекбокса в выключенном состоянии (переключатель). */
-.checkbox:not(checked) + label:after {
+.ch-checkbox:not(checked) + label:after {
   content: '';
   position: absolute;
   top: -2px;
@@ -237,14 +237,14 @@ label.toggle-checkbox {
   transition: all .2s; /* анимация, чтобы чекбокс переключался плавно */
 }
 /* Меняем фон чекбокса, когда он включен. */
-.checkbox:checked + label:before {
+.ch-checkbox:checked + label:before {
   background: #9FD468;
 }
 /* Сдвигаем переключатель чекбокса, когда он включен. */
-.checkbox:checked + label:after {
+.ch-checkbox:checked + label:after {
   left: 26px;
 }
 /* Показываем получение фокуса. */
-.checkbox:focus + label:before {
+.ch-checkbox:focus + label:before {
   //box-shadow: 0 0 0 3px rgba(255,255,0,.5);
 }
