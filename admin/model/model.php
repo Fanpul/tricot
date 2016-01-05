@@ -97,11 +97,28 @@ function add_category($link) {
 	return true;
 }
 
+// удалить категорию по ид
 function deleteCategoryById($link, $id) {
 	$query = "DELETE FROM `category` WHERE `id`='$id'";
 	$result = mysqli_query($link, $query) or die(mysqli_error($link));
 	mysqli_query($link, "DELETE FROM `category` WHERE `parentid` = '$id'");
 	return true;		
+}
+
+function updateCategoryName($link) {
+	$name = clear($link, $_POST['categoryname']);
+	$id = $_POST['categoryid'];
+	$query = "UPDATE `category` SET `name`='$name' WHERE `id`='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
+}
+
+function updateCategoryVisible($link) {
+	$visible = $_POST['visible'];
+	$id = $_POST['categoryid'];
+	$query = "UPDATE `category` SET `visible`='$visible' WHERE `id`='$id'";
+	$result = mysqli_query($link, $query) or die(mysqli_error($link));
+	return true;
 }
 
 // создать продукт

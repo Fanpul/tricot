@@ -1,3 +1,7 @@
+.display-none {
+	display: none;
+}
+
 .product-pic {
 	height: 230px;
 	width: 250px;
@@ -119,6 +123,13 @@ table thead {
 /*---------edit field-----------*/
 .block-view {
 	position: relative;
+	padding: 0 0 0 10px;
+	//width: 90%;
+	background: #fff;
+}
+
+.block-view:hover a.display-none {
+	display: inline-block;
 }
 
 .block-edit {
@@ -126,7 +137,6 @@ table thead {
 	background: #fff;
 	position: absolute;
 	height: 100%;
-	width: 300px;
 	left: 0;
 	top: 0;
 }
@@ -135,7 +145,7 @@ table thead {
 	display: inline-block;
 }
 
-.block-edit input {
+.block-edit input[type="text"] {
 	height: 25px;
 	width: 200px;
 	font-size: 14px;
@@ -155,4 +165,86 @@ table thead {
 	margin: 0;
 	padding: 0;
 	color: rgba(255,0,0,.7);
+}
+
+.block-edit button {
+	font-size: 18px;
+}
+
+.block-edit button:hover {
+	color: #3C8DBC;
+}
+
+.category-visible {
+	width: 115px;
+}
+
+/*---------checkbox-----------*/
+label.toggle-checkbox {
+	display: inline;
+}
+/* Cначала обозначаем стили для IE8 и более старых версий
+т.е. здесь мы немного облагораживаем стандартный чекбокс. */
+.checkbox {
+  width: 50px;
+  z-index: 99;
+  vertical-align: top;
+  margin: 0 3px 0 0;
+  height: 17px;
+}
+/* Это для всех браузеров, кроме совсем старых, которые не поддерживают
+селекторы с плюсом. Показываем, что label кликабелен. */
+.checkbox + label {
+  cursor: pointer;
+}
+
+/* Далее идет оформление чекбокса в современных браузерах, а также IE9 и выше.
+Благодаря тому, что старые браузеры не поддерживают селекторы :not и :checked,
+в них все нижеследующие стили не сработают. */
+
+/* Прячем оригинальный чекбокс. */
+.checkbox:not(checked) {
+  position: absolute;
+  opacity: 0;
+}
+.checkbox:not(checked) + label {
+  position: relative; /* будем позиционировать псевдочекбокс относительно label */
+  padding: 0 0 0 60px; /* оставляем слева от label место под псевдочекбокс */
+}
+/* Оформление первой части чекбокса в выключенном состоянии (фон). */
+.checkbox:not(checked) + label:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 50px;
+  height: 26px;
+  border-radius: 13px;
+  background: #CDD1DA;
+  box-shadow: inset 0 2px 3px rgba(0,0,0,.2);
+}
+/* Оформление второй части чекбокса в выключенном состоянии (переключатель). */
+.checkbox:not(checked) + label:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 10px;
+  background: #FFF;
+  box-shadow: 0 2px 5px rgba(0,0,0,.3);
+  transition: all .2s; /* анимация, чтобы чекбокс переключался плавно */
+}
+/* Меняем фон чекбокса, когда он включен. */
+.checkbox:checked + label:before {
+  background: #9FD468;
+}
+/* Сдвигаем переключатель чекбокса, когда он включен. */
+.checkbox:checked + label:after {
+  left: 26px;
+}
+/* Показываем получение фокуса. */
+.checkbox:focus + label:before {
+  //box-shadow: 0 0 0 3px rgba(255,255,0,.5);
 }

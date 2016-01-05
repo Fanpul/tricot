@@ -22,8 +22,16 @@ $cuser = getUserById($link, $_SESSION['auth']['user_id']);
 
 switch ($view) {
 	case 'categories':
-		$category = getCategoryAllByParentId($link);
+		if (isset($_POST['ok'])) {
+			updateCategoryName($link);
+			redirect();
+		}
+		if (isset($_POST['okvisible'])) {
+			updateCategoryVisible($link);
+			redirect();
+		}
 
+		$category = getCategoryAllByParentId($link);
 
 		switch ($_GET['action']) {
 			case 'add-category':

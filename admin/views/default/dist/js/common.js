@@ -3,7 +3,6 @@ $(document).ready(function() {
         $(this).on('click', function (e) {
             e.preventDefault();
             $(this).next().show();
-            console.log('lala');
         });
     });
 

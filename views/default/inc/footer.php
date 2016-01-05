@@ -12,7 +12,7 @@
 				<h2>Контакты</h2>
 				<ul>
 					<li>время работы: Пн-Сб: 10.00-18.00</li>
-					<li><i class="fa fa-envelope-o"></i> shop@kolibri.cn.ua</li>
+					<li><i class="fa fa-envelope-o"></i> kolibri.cn@ukr.net</li>
 					<li><i class="fa fa-map-marker faa"></i> Чернигов, пр. Победы, 100</li>
 				</ul>
 				<span><i class="fa fa-mobile faa"></i> +3 (050) 59 59 335</span>
@@ -39,6 +39,7 @@
 				<ul>
 					<li><a href="/">Главная</a></li>
 					<li><a href="/cart/">Корзина</a></li>
+					<li><a href="/about/">О нас</a></li>
 					<li><a href="/supplierprice/">Прайс лист</a></li>
 				</ul>
 			</div>
