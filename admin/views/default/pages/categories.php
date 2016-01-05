@@ -21,10 +21,19 @@
 				<?php foreach ($category as $value):?>
 					<div class="panel box box-primary">
 						<div class="box-header with-border">
-							<h4 class="box-title">
+							<h4 class="box-title block-view">
 								<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$value['id']?>">
 									<?=$value['name']?>
 								</a>
+								<a class="js-open-block-edit" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                                <div class="block-edit js-block-edit">
+                                    <form method="post">
+                                        <input type="text" name="categoryname" value="<?=$value['name']?>">
+                                        <input type="hidden" name="categoryid" value="<?=$value['id']?>">
+                                        <button class="success" type="submit" name="ok"><i class="fa fa-check-circle"></i></button>
+                                    </form>
+                                    <button class="cancel js-close-block-edit" type="button" ><i class="fa fa-ban"></i></button>
+                                </div>
 							</h4>
 							<div class="pull-right">
 								<a href="?view=categories&amp;action=delete&amp;id=<?=$value['id']?>" onclick="return confirm('Вы подтверждаете удаление?');"><i class="fa fa-trash faa"></i></a>
@@ -54,7 +63,18 @@
 													echo $i;
 												?>
 							        		</th>
-							        		<th><a href="?view=categories&amp;action=edit&amp;id=<?=$value['id']?>"><?=$value['name']?></a></th>
+							        		<th class="block-view">
+                                                <a href="?view=categories&amp;action=edit&amp;id=<?=$value['id']?>"><?=$value['name']?></a>
+                                                <a class="js-open-block-edit" href="#"><i class="fa fa-pencil-square-o"></i></a>
+                                                <div class="block-edit js-block-edit">
+                                                    <form method="post">
+                                                        <input type="text" name="categoryname" value="<?=$value['name']?>">
+                                                        <input type="hidden" name="categoryid" value="<?=$value['id']?>">
+                                                        <button class="success" type="submit" name="ok"><i class="fa fa-check-circle"></i></button>
+                                                    </form>
+                                                    <button class="cancel js-close-block-edit" type="button" ><i class="fa fa-ban"></i></button>
+                                                </div>
+                                            </th>
 							        		<th><a href="?view=categories&amp;action=delete&amp;id=<?=$value['id']?>" onclick="return confirm('Вы подтверждаете удаление?');"><i class="fa fa-trash faa"></i></a></th>
 							        	</tr>
 									<?php endforeach;?>

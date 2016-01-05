@@ -115,3 +115,44 @@ table thead {
 	font-weight: normal;
 	font-size: 14px;
 }
+
+/*---------edit field-----------*/
+.block-view {
+	position: relative;
+}
+
+.block-edit {
+	display: none;
+	background: #fff;
+	position: absolute;
+	height: 100%;
+	width: 300px;
+	left: 0;
+	top: 0;
+}
+
+.block-edit form {
+	display: inline-block;
+}
+
+.block-edit input {
+	height: 25px;
+	width: 200px;
+	font-size: 14px;
+}
+
+.block-edit .success {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	color: rgba(100,200,0,.7);
+}
+
+.block-edit .cancel {
+	background: none;
+	border: none;
+	margin: 0;
+	padding: 0;
+	color: rgba(255,0,0,.7);
+}

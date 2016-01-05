@@ -98,6 +98,8 @@
         <script src="<?=PATH?><?=TEMPLATE?>plugins/select2/select2.full.min.js"></script>
         <!-- iCheck 1.0.1 -->
         <script src="<?=PATH?><?=TEMPLATE?>plugins/iCheck/icheck.min.js"></script>
+        <!-- my scripts -->
+        <script src="<?=PATH?><?=TEMPLATE?>dist/js/common.js"></script>
 
         <script>
           $(function () {
