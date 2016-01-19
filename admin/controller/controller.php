@@ -70,19 +70,26 @@ switch ($view) {
 				$id = abs((int)$_GET['id']);
 				if(isset($_POST['ok'])){	
 					$basename =  basename($_FILES['pic']['name']);
+					$filenew = false;
 					if (preg_match("/.+(\.[a-z]+)/i", $basename, $r)) {
 						$file = md5(mt_rand(1, 9999999999)) . strtolower($r[1]);
+						$filenew = md5(mt_rand(1, 9999999999)).'.jpeg';
 					} else {
 						$file = $basename;  // по идее не должно сработать
 					}
 					$uploadfile = UPLOADDIR . $file;
-					$filenew = md5(mt_rand(1, 9999999999)).'.jpeg';
+					//$filenew = md5(mt_rand(1, 9999999999)).'.jpeg';
 					$uploadfilenew = UPLOADDIR . $filenew;
 					// сохраняем на сервере картинку
 					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
-					img_resize($uploadfile, $uploadfilenew, 684, 690);
-					saveEditProduct($link, $id, $filenew);
-					$msg="a-success";
+					$optimimg = @img_resize($uploadfile, $uploadfilenew, 684, 690);
+					if ($optimimg === 'limit_size') {
+						$msgerror="a-success";
+					} else {
+						saveEditProduct($link, $id, $filenew);
+						$msg="a-success";
+					}
+					
 				}
 				if ($id) {
 					$product = getProductById($link, $id);
@@ -110,7 +117,7 @@ switch ($view) {
 					$uploadfilenew = UPLOADDIR . $filenew;
 					// сохраняем на сервере картинку
 					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
-					img_resize($uploadfile, $uploadfilenew, 684, 690);
+					@img_resize($uploadfile, $uploadfilenew, 684, 690);
 					add_product($link, $filenew);
 					$msg="a-success";
 					//redirect();

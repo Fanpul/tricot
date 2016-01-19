@@ -305,7 +305,7 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   	if (!file_exists($src)) {
    		return false;
 	} 
-
+	
   	$size = getimagesize($src); 
   	//print_r($size);
     if ($size === false) {
@@ -331,17 +331,13 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   $new_height  = !$use_x_ratio ? $height : floor($size[1] * $ratio); 
   $new_left    = 0;//$use_x_ratio  ? 0 : floor(($width - $new_width) / 2); 
   $new_top     = 0;//!$use_x_ratio ? 0 : floor(($height - $new_height) / 2); 
-//echo filesize($src);
-echo memory_get_usage() . "\n";
-echo memory_get_usage(true);
-  try {
-  	$isrc = @$icfunc($src); 
-  	if (!$isrc) {
-		die('Слишком большой файл1');
-  	}
-  } catch (Exception $ge) {
-  	die('Слишком большой файл');
-  }
+	//echo filesize($src);
+if (filesize($src) > 4159232) {
+	return 'limit_size';
+} else {
+	$isrc = @$icfunc($src);
+}
+
   //$idest = imagecreatetruecolor($width, $height); 
   $idest = imagecreatetruecolor($new_width, $new_height); 
 

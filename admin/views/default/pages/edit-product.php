@@ -17,7 +17,11 @@
     <h4>  <i class="icon fa fa-check"></i> Сохранено</h4>
     Успешно изменен "<?=$product['name']?>"
   </div>
-
+  <div class="alert alert-danger alert-dismissable a-block <?=$msgerror?>">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true" name='close'>&times;</button>
+    <h4>  <i class="icon fa fa-ban"></i> Ошибка</h4>
+    Слишком большая картинка!
+  </div>
   <!-- Your Page Content Here -->
         <div class="col-md-10 col-md-offset-1">
           <!-- Horizontal Form -->
