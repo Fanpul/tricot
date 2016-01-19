@@ -333,7 +333,7 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   $new_top     = 0;//!$use_x_ratio ? 0 : floor(($height - $new_height) / 2); 
 
   try {
-  	$isrc = $icfunc($src); 
+  	$isrc = @$icfunc($src); 
   } catch (Exception $ge) {
   	echo 'Слишком большой файл';
   }
