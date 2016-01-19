@@ -1,4 +1,3 @@
-php_value memory_limit 64M
 AddDefaultCharset utf-8
 ErrorDocument 404 /page404.html
 RewriteEngine off
