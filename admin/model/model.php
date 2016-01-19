@@ -307,7 +307,7 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
 	} 
 
   	$size = getimagesize($src); 
-  	print_r($size);
+  	//print_r($size);
     if ($size === false) {
   		return false; 
 	} 
@@ -316,9 +316,7 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   // функцией getimagesize, и выбираем соответствующую формату 
   // imagecreatefrom-функцию. 
   $format = strtolower(substr($size['mime'], strpos($size['mime'], '/')+1)); 
-  print $format;
   $icfunc = "imagecreatefrom" . $format; 
-  print $icfunc;
   if (!function_exists($icfunc)) {
   	return false; 
   } 
@@ -334,7 +332,7 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   $new_left    = 0;//$use_x_ratio  ? 0 : floor(($width - $new_width) / 2); 
   $new_top     = 0;//!$use_x_ratio ? 0 : floor(($height - $new_height) / 2); 
 
-  $isrc = $icfunc($src); 
+  $isrc = @$icfunc($src); 
   //$idest = imagecreatetruecolor($width, $height); 
   $idest = imagecreatetruecolor($new_width, $new_height); 
 
