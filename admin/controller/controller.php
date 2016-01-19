@@ -103,9 +103,11 @@ switch ($view) {
 
 				if(isset($_POST["ok"])) {
 					$basename =  basename($_FILES['pic']['name']);
+					$filenew = false;
 					if ($basename) {
 						if (preg_match("/.+(\.[a-z]+)/i", $basename, $r)) {
 							$file = md5(mt_rand(1, 9999999999)) . strtolower($r[1]);
+							$filenew = md5(mt_rand(1, 9999999999)).'.jpeg';
 						} else {
 							$file = $basename;  // по идее не должно сработать
 						}
@@ -113,7 +115,6 @@ switch ($view) {
 						$file = 'no_photo.png';
 					}
 					$uploadfile = UPLOADDIR . $file;
-					$filenew = md5(mt_rand(1, 9999999999)).'.jpeg';
 					$uploadfilenew = UPLOADDIR . $filenew;
 					// сохраняем на сервере картинку
 					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
