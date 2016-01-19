@@ -19,7 +19,7 @@ if($_GET['do'] == 'logout'){
 }
 
 $cuser = getUserById($link, $_SESSION['auth']['user_id']);
-
+img_resize('c:/OpenServer/domains/tri.loc/userfiles/att_3176.png', 'c:/OpenServer/domains/tri.loc/userfiles/test.jpg', 684, 690);
 switch ($view) {
 	case 'categories':
 		if (isset($_POST['ok'])) {
@@ -48,10 +48,6 @@ switch ($view) {
 				if ($id && isset($_GET['id'])) {
 					deleteCategoryById($link, $id);
 				}
-/*					if ($id && isset($_POST['del'])) {
-					deleteOrderById($link, $id);
-					$msg = 'Успешно удалено!';
-				}*/
 				redirect();
   			break;	
 		}
@@ -80,9 +76,12 @@ switch ($view) {
 						$file = $basename;  // по идее не должно сработать
 					}
 					$uploadfile = UPLOADDIR . $file;
+					$filenew = md5(mt_rand(1, 9999999999)).'.jpeg';
+					$uploadfilenew = UPLOADDIR . $filenew;
 					// сохраняем на сервере картинку
 					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
-					saveEditProduct($link, $id, $file);
+					img_resize($uploadfile, $uploadfilenew, 684, 690);
+					saveEditProduct($link, $id, $filenew);
 					$msg="a-success";
 				}
 				if ($id) {
@@ -90,9 +89,6 @@ switch ($view) {
 				} else {
 					redirect();
 				}
-				/*if(isset($_POST['submit_cancel'])){	
-					header("Location: ?view=trips");
-				}*/
   			break;
   			case 'add-product':
 				$view = 'add-product';
@@ -110,9 +106,12 @@ switch ($view) {
 						$file = 'no_photo.png';
 					}
 					$uploadfile = UPLOADDIR . $file;
+					$filenew = md5(mt_rand(1, 9999999999)).'.jpeg';
+					$uploadfilenew = UPLOADDIR . $filenew;
 					// сохраняем на сервере картинку
 					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
-					add_product($link, $file);
+					img_resize($uploadfile, $uploadfilenew, 684, 690);
+					add_product($link, $filenew);
 					$msg="a-success";
 					//redirect();
 				}
