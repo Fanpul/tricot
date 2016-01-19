@@ -335,9 +335,12 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
 echo memory_get_usage() . "\n";
 echo memory_get_usage(true);
   try {
-  	$isrc = $icfunc($src); 
+  	$isrc = @$icfunc($src); 
+  	if (!$isrc) {
+		die('Слишком большой файл1');
+  	}
   } catch (Exception $ge) {
-  	echo 'Слишком большой файл';
+  	die('Слишком большой файл');
   }
   //$idest = imagecreatetruecolor($width, $height); 
   $idest = imagecreatetruecolor($new_width, $new_height); 
