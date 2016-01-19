@@ -118,7 +118,10 @@ switch ($view) {
 					$uploadfilenew = UPLOADDIR . $filenew;
 					// сохраняем на сервере картинку
 					move_uploaded_file($_FILES['pic']['tmp_name'], $uploadfile);
-					@img_resize($uploadfile, $uploadfilenew, 684, 690);
+					$optimimg = @img_resize($uploadfile, $uploadfilenew, 684, 690);
+					if ($optimimg === 'limit_size') {
+						$filenew = 'no_photo.png';
+					}
 					add_product($link, $filenew);
 					$msg="a-success";
 					//redirect();
