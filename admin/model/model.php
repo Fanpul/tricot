@@ -332,7 +332,11 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   $new_left    = 0;//$use_x_ratio  ? 0 : floor(($width - $new_width) / 2); 
   $new_top     = 0;//!$use_x_ratio ? 0 : floor(($height - $new_height) / 2); 
 
-  $isrc = @$icfunc($src); 
+  try {
+  	$isrc = $icfunc($src); 
+  } catch (Exception $ge) {
+  	echo 'Слишком большой файл';
+  }
   //$idest = imagecreatetruecolor($width, $height); 
   $idest = imagecreatetruecolor($new_width, $new_height); 
 
