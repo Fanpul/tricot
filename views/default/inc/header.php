@@ -13,7 +13,7 @@
 	<meta name="description" content="" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="shortcut icon" href="favicon.png" />
+	<link href="<?=PATH?><?=TEMPLATE?>favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>libs/bootstrap/bootstrap-grid-3.3.1.min.css" />
 	<link rel="stylesheet" href="<?=PATH?><?=TEMPLATE?>libs/font-awesome-4.2.0/css/font-awesome.min.css" />
@@ -28,7 +28,6 @@
 </head>
 <body>
 <div class="wrapper-mainer">
-<?php //print_r($_SESSION) ?>
 	<div class="top-line">
 		<div class="container">
 			<div class="phone-box">

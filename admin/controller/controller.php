@@ -19,7 +19,6 @@ if($_GET['do'] == 'logout'){
 }
 
 $cuser = getUserById($link, $_SESSION['auth']['user_id']);
-img_resize('c:/OpenServer/domains/tri.loc/userfiles/att_3176.png', 'c:/OpenServer/domains/tri.loc/userfiles/test.jpg', 684, 690);
 switch ($view) {
 	case 'categories':
 		if (isset($_POST['ok'])) {

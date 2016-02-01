@@ -11,7 +11,7 @@
 <div class="clear"></div>
 <hr>
 <span class="ubaut-us-tel">Почтовый ящик :</span>
-<span class="link-us-box">shop@kolibri.cn.ua</span>
+<span class="link-us-box">kolibri.cn@ukr.net</span>
 <hr>
 <span class="ubaut-us-tel">
 Соц. сети :</span><span class="about-us-soc"><a class="about-vk" href="https://vk.com/club105188077"><i class="fa fa-vk fa-1x "></i></a></span>

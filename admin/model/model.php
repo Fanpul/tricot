@@ -305,7 +305,7 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   	if (!file_exists($src)) {
    		return false;
 	} 
-	
+
   	$size = getimagesize($src); 
   	//print_r($size);
     if ($size === false) {
@@ -332,11 +332,11 @@ function img_resize($src, $dest, $width, $height, $rgb=0xFFFFFF, $quality=100)
   $new_left    = 0;//$use_x_ratio  ? 0 : floor(($width - $new_width) / 2); 
   $new_top     = 0;//!$use_x_ratio ? 0 : floor(($height - $new_height) / 2); 
 	//echo filesize($src);
-if (filesize($src) > 4159232) {
+/*if (filesize($src) > 4159232) {
 	return 'limit_size';
-} else {
+} else {*/
 	$isrc = @$icfunc($src);
-}
+//}
 
   //$idest = imagecreatetruecolor($width, $height); 
   $idest = imagecreatetruecolor($new_width, $new_height); 

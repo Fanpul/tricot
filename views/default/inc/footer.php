@@ -13,7 +13,7 @@
 				<ul>
 					<li>время работы: Пн-Сб: 10.00-18.00</li>
 					<li><i class="fa fa-envelope-o"></i> kolibri.cn@ukr.net</li>
-					<li><i class="fa fa-map-marker faa"></i> Чернигов, пр. Победы, 100</li>
+					<li><i class="fa fa-map-marker faa"></i> Чернигов, ул. Любечская, 155</li>
 				</ul>
 				<span><i class="fa fa-mobile faa"></i> +3 (050) 59 59 335</span>
 				<span><i class="fa fa-mobile faa"></i> +3 (096) 07 03 230</span>
